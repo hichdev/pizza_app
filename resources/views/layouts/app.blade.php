@@ -178,41 +178,14 @@
                         </div>
                         <div class="pcoded-navigation-label">Navigation</div>
                         <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu active pcoded-trigger">
-                                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                            <li class="">
+                                <a href="{{ route('admin.dashboard') }}" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                     <span class="pcoded-mtext">Dashboard</span>
                                 </a>
-                                <ul class="pcoded-submenu">
-                                    <li class="active">
-                                        <a href="index.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-mtext">Default</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="dashboard-ecommerce.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-mtext">Ecommerce</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="dashboard-crm.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-mtext">CRM</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="dashboard-analytics.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-mtext">Analytics</span>
-                                            <span class="pcoded-badge label label-info ">NEW</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="dashboard-project.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-mtext">Project</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
-                            <li class="pcoded-hasmenu">
+
+                            <!--li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
                                     <span class="pcoded-mtext">Page layouts</span>
@@ -331,7 +304,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="pcoded-navigation-label">UI Element</div>
+                        <div class="pcoded-navigation-label">UI Element<div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -1660,7 +1633,7 @@
                                     <span class="pcoded-mtext">Need Support ?</span>
                                 </a>
                             </li>
-                        </ul>
+                        </ul!-->
                     </div>
                 </nav>
                 <!-- [ navigation menu ] end -->
