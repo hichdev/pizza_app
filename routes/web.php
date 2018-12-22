@@ -24,6 +24,22 @@ Route::get('/admin', [
     'uses' => 'BackendController@dashboard',
     'as' => 'admin.dashboard'
 
+]);
 
+Route::get('/admin/users', [
 
+    'uses' => 'AdminUsersController@index',
+    'as' => 'admin.user'
+]);
+
+Route::get('/admin/users/create', [
+
+    'uses' => 'AdminUsersController@create',
+    'as' => 'admin.user.create'
+]);
+
+Route::post('/admin/users/store', [
+
+    'uses' => 'AdminUsersController@store',
+    'as' => 'admin.user.store'
 ]);
