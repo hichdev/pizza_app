@@ -49,7 +49,7 @@
                                                         <tr>
                                                             <th>Voornaam</th>
                                                             <th>Achternaam</th>
-                                                            <th>Gsm nummer</th>
+                                                            <th>Email</th>
                                                             <th>Rol</th>
                                                             <th></th>
 
@@ -57,28 +57,28 @@
                                                         </thead>
                                                         <tbody>
 
-                                                        @foreach($users as $user)
+                                                        @foreach($adminusers as $user)
                                                         <tr>
                                                             <td>{{ $user->firstname }}</td>
                                                             <td>{{ $user->lastname }}</td>
-                                                            <td>{{ $user->mobilephone }}</td>
+                                                            <td>{{ $user->email }}</td>
                                                             <td>{{ $user->role->name }}</td>
-                                                            <td>Wijzig profiel</td>
+                                                            <td>
+                                                                <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}" class="btn btn-primary waves-effect waves-light btn-block">Wijzig profiel</a>
+
                                                         </tr>
 
 
                                                         @endforeach
-
 
                                                         </tbody>
                                                         <tfoot>
                                                         <tr>
                                                             <th>Voornaam</th>
                                                             <th>Achternaam</th>
-                                                            <th>Gsm nummer</th>
+                                                            <th>Email</th>
                                                             <th>Rol</th>
                                                             <th></th>
-
                                                         </tr>
                                                         </tfoot>
                                                     </table>

@@ -6,9 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Adminuser extends Authenticatable
 {
     use Notifiable;
+
+    protected $guard = 'adminuser';
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'mobilephone', 'address_id', 'role_id', 'email', 'password',
+        'firstname', 'lastname', 'role_id', 'email', 'password',
     ];
 
 
@@ -29,6 +31,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function role(){
+
+
+       return $this->belongsTo('App\Role');
+    }
 
 
 

@@ -9,7 +9,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-8">
                         <div class="page-header-title">
-                            <h4 class="m-b-10">Maak een nieuwe gebruiker aan</h4>
+                            <h4 class="m-b-10">Wijzig profiel van {{ $user->firstname }}</h4>
                         </div>
 
                     </div>
@@ -28,10 +28,10 @@
                                 <!-- Input Alignment card start -->
                                 <div class="card">
                                     <div class="card-header">
-                                        <p>Alle velden hieronder zijn verplicht.</p>
+                                        <p></p>
                                     </div>
                                     <div class="card-block">
-                                        <form action="{{ route('admin.users.store') }}" method="POST">
+                                        <form action="{{ route('admin.users.update', ['id' => $user->id]) }}" method="POST">
 
                                             {{ csrf_field() }}
 
@@ -39,7 +39,7 @@
                                                 <label for="firstname" class="col-sm-2 col-form-label">Voornaam</label>
                                                 <div class="col-sm-10">
                                                     <input id="firstname" name="firstname" type="text" class="form-control form-control-normal"
-                                                           placeholder="Geef een voornaam in">
+                                                           value="{{ $user->firstname }}">
                                                 </div>
                                             </div>
 
@@ -47,7 +47,7 @@
                                                 <label for="lastname" class="col-sm-2 col-form-label">Achternaam</label>
                                                 <div class="col-sm-10">
                                                     <input id="lastname" name="lastname" type="text" class="form-control form-control-normal"
-                                                           placeholder="Geef een achternaam in">
+                                                           value={{ $user->lastname }}>
                                                 </div>
                                             </div>
 
@@ -55,7 +55,7 @@
                                                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-10">
                                                     <input id="email" name="email" type="email" class="form-control form-control-normal"
-                                                           placeholder="Geef een email adres in">
+                                                           value="{{ $user->email }}">
                                                 </div>
                                             </div>
 
@@ -75,7 +75,7 @@
 
                                                         @foreach($roles as $role)
 
-                                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                            <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : '' }}>{{ $role->name }}</option>
 
                                                         @endforeach
 
@@ -89,7 +89,7 @@
                                                 <div class="col-sm-2"> </div>
 
                                                 <div class="col-sm-10">
-                                                    <button class="btn btn-primary waves-effect waves-light " type="submit" >Aanmaken</button>
+                                                    <button class="btn btn-primary waves-effect waves-light " type="submit" >Wijzigingen opslaan</button>
                                                 </div>
 
                                             </div>
@@ -113,11 +113,11 @@
         </div>
     </div>
     </div>
-                        <!-- [ page content ] end -->
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- [ page content ] end -->
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
 
 @endsection

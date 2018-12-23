@@ -202,10 +202,28 @@
                                     <li >
                                         <a href="{{ route('admin.user.create') }}" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                                            <span class="pcoded-mtext">Maak gebruiker aan</span>
+                                            <span class="pcoded-mtext">Nieuwe gebruiker</span>
                                         </a>
 
                                     </li>
+
+                                    <li >
+                                        <a href="{{ route('admin.users.roles') }}" class="waves-effect waves-dark">
+                                            <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                                            <span class="pcoded-mtext">Rollen</span>
+                                        </a>
+
+                                    </li>
+
+                                    <li >
+                                        <a href="{{ route('admin.users.role.create') }}" class="waves-effect waves-dark">
+                                            <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                                            <span class="pcoded-mtext">Nieuwe rol</span>
+                                        </a>
+
+                                    </li>
+
+
 
 
 
