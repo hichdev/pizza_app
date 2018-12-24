@@ -10,11 +10,21 @@ class AdminUsersController extends Controller
 {
     //
 
+
+    public function __construct()
+    {
+
+        $this->middleware('auth:adminusers');
+
+    }
+
+
     public function index(){
 
 
+        $users = Adminuser::orderBy('created_at', 'desc')->paginate(5);
 
-        return view('admin.user.index')->with('adminusers', Adminuser::all());
+        return view('admin.user.index', ['adminusers'=> $users]);
 
     }
 
@@ -38,6 +48,7 @@ class AdminUsersController extends Controller
 
             'firstname' => 'required',
             'lastname' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
             'role_id' => 'required'
 
@@ -76,6 +87,7 @@ class AdminUsersController extends Controller
 
             'firstname' => 'required',
             'lastname' => 'required',
+            'email' => 'required|email',
             'role_id' => 'required'
 
         ]);
@@ -95,6 +107,20 @@ class AdminUsersController extends Controller
 
     }
 
+    public function delete($id){
+
+        $user = Adminuser::find($id);
+
+
+
+        $user->delete();
+
+        return redirect()->route('admin.user');
+
+
+    }
+
+
     public function roles(){
 
         return view('admin.user.role.index')->with('roles', Role::all());
@@ -113,7 +139,7 @@ class AdminUsersController extends Controller
      * @param Request $request
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function rolStore(Request $request){
+    public function roleStore(Request $request){
 
         $this->validate($request, [
 
@@ -124,6 +150,18 @@ class AdminUsersController extends Controller
         Role::create(['name' => $request->name]);
 
        return redirect()->route('admin.users.roles');
+
+    }
+
+    public function roleDelete($id){
+
+        $role = Role::find($id);
+
+
+        $role->delete();
+
+        return redirect()->route('admin.users.roles');
+
 
     }
 

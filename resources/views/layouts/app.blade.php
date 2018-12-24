@@ -106,40 +106,30 @@
                             </div>
                         </li>
                         <li class="user-profile header-notification">
-                            <div class="dropdown-primary dropdown">
+                            <!--div class="dropdown-primary dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="{{ asset('backend/images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
-                                    <span>John Doe</span>
+                                    <span></span>
+
                                     <i class="feather icon-chevron-down"></i>
                                 </div>
                                 <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+
                                     <li>
-                                        <a href="#!">
-                                            <i class="feather icon-settings"></i> Settings
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="user-profile.html">
-                                            <i class="feather icon-user"></i> Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="email-inbox.html">
-                                            <i class="feather icon-mail"></i> My Messages
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="auth-lock-screen.html">
-                                            <i class="feather icon-lock"></i> Lock Screen
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="auth-normal-sign-in.html">
-                                            <i class="feather icon-log-out"></i> Logout
-                                        </a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                <i class="feather icon-log-out"></i>
+                                                {{ __('Uitloggen') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                                @csrf
+                                            </form>
+
                                     </li>
                                 </ul>
-                            </div>
+                            </div!-->
                         </li>
                     </ul>
                 </div>
@@ -153,29 +143,7 @@
                 <!-- [ navigation menu ] start -->
                 <nav class="pcoded-navbar">
                     <div class="pcoded-inner-navbar main-menu">
-                        <div class="">
-                            <div class="main-menu-header">
-                                <img class="img-menu-user img-radius" src="{{ asset('backend/images/avatar-4.jpg') }}" alt="User-Profile-Image">
-                                <div class="user-details">
-                                    <p id="more-details">John Doe<i class="feather icon-chevron-down m-l-10"></i></p>
-                                </div>
-                            </div>
-                            <div class="main-menu-content">
-                                <ul>
-                                    <li class="more-details">
-                                        <a href="user-profile.html">
-                                            <i class="feather icon-user"></i>View Profile
-                                        </a>
-                                        <a href="#!">
-                                            <i class="feather icon-settings"></i>Settings
-                                        </a>
-                                        <a href="auth-normal-sign-in.html">
-                                            <i class="feather icon-log-out"></i>Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+
                         <div class="pcoded-navigation-label">Navigation</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="">

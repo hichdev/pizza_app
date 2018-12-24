@@ -8,7 +8,13 @@ class BackendController extends Controller
 {
     //
 
-     public function dashboard(){
+    public function __construct()
+    {
+        $this->middleware('auth:adminusers');
+    }
+
+
+    public function dashboard(){
 
 
          return view('admin.dashboard');

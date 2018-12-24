@@ -30,6 +30,28 @@
                                     <div class="card-header">
                                         <p>Alle velden hieronder zijn verplicht.</p>
                                     </div>
+
+                                    @if(count($errors) > 0)
+
+                                        <ul class="list-group">
+
+                                            @foreach($errors->all() as $error)
+
+
+                                                <li class="list-group-item text-danger">
+
+                                                    {{ $error }}
+
+                                                </li>
+
+
+                                            @endforeach
+
+                                        </ul>
+
+
+                                    @endif
+
                                     <div class="card-block">
                                         <form action="{{ route('admin.users.store') }}" method="POST">
 

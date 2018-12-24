@@ -84,6 +84,11 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                            <div class="card-footer text-center pagination">
+
+                                                {{ $adminusers->links() }}
+
+                                            </div>
                                         </div>
 
 

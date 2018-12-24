@@ -30,6 +30,26 @@
                                     <div class="card-header">
                                         <p></p>
                                     </div>
+                                    @if(count($errors) > 0)
+
+                                        <ul class="list-group">
+
+                                            @foreach($errors->all() as $error)
+
+
+                                                <li class="list-group-item text-danger">
+
+                                                    {{ $error }}
+
+                                                </li>
+
+
+                                            @endforeach
+
+                                        </ul>
+
+
+                                    @endif
                                     <div class="card-block">
                                         <form action="{{ route('admin.users.update', ['id' => $user->id]) }}" method="POST">
 
@@ -88,9 +108,18 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-2"> </div>
 
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-5">
                                                     <button class="btn btn-primary waves-effect waves-light " type="submit" >Wijzigingen opslaan</button>
                                                 </div>
+
+
+                                                <div class="col-sm-5">
+
+                                                    <a href="{{ route('admin.user.delete', ['id' => $user->id]) }}" class="btn btn-danger waves-effect waves-light ">Verwijder profiel</a>
+
+
+                                                </div>
+
 
                                             </div>
 

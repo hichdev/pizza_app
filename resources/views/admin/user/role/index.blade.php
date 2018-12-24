@@ -58,7 +58,9 @@
                                                         @foreach($roles as $role)
                                                             <tr>
                                                                 <td>{{ $role->name }}</td>
-                                                                <td>Wijzig profiel</td>
+                                                                <td>
+                                                                    <a href="{{ route('admin.users.role.delete', ['id' => $role->id]) }}" class=" col-sm-4 btn btn-danger waves-effect waves-light btn-block">Verwijder rol</a>
+                                                                </td>
                                                             </tr>
 
 

@@ -20,67 +20,104 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::prefix('admin')->group(function (){
+
+
+    Route::get('/login', [
+
+        'uses' => 'Auth\AdminLoginController@showLoginForm',
+        'as' => 'admin.login'
+
+    ]);
+
+    Route::post('/login', [
+
+        'uses' => 'Auth\AdminLoginController@login',
+        'as' => 'admin.login.submit'
+
+    ]);
+
+
+    Route::get('/', [
+
+        'uses' => 'BackendController@dashboard',
+        'as' => 'admin.dashboard'
+
+    ]);
+
+    Route::get('/users', [
+
+        'uses' => 'AdminUsersController@index',
+        'as' => 'admin.user'
+    ]);
+
+    Route::get('/users/create', [
+
+        'uses' => 'AdminUsersController@create',
+        'as' => 'admin.user.create'
+    ]);
+
+    Route::post('/users/store', [
+
+        'uses' => 'AdminUsersController@store',
+        'as' => 'admin.users.store'
+    ]);
+
+    Route::get('/users/edit/{id}', [
+
+        'uses' => 'AdminUsersController@edit',
+        'as' => 'admin.users.edit'
+
+    ]);
+
+    Route::post('/users/update/{id}', [
+
+        'uses' => 'AdminUsersController@update',
+        'as' => 'admin.users.update'
+
+
+    ]);
+
+    Route::get('/users/delete/{id}', [
+
+        'uses' => 'AdminUsersController@delete',
+        'as' => 'admin.user.delete'
+    ]);
+
+    Route::get('/users/roles', [
+
+        'uses' => 'AdminUsersController@roles',
+        'as' => 'admin.users.roles'
+
+
+    ]);
+
+    Route::get('/users/roles/create', [
+
+        'uses' => 'AdminUsersController@rolesCreate',
+        'as' => 'admin.users.role.create'
+
+
+    ]);
+
+    Route::post('/users/roles/store', [
+
+        'uses' => 'AdminUsersController@roleStore',
+        'as' => 'admin.users.role.store'
+    ]);
+
+
+    Route::get('/users/roles/delete/{id}', [
+
+        'uses' => 'AdminUsersController@roleDelete',
+        'as' => 'admin.users.role.delete'
+    ]);
 
 
 
-Route::get('/admin', [
-
-    'uses' => 'BackendController@dashboard',
-    'as' => 'admin.dashboard'
-
-]);
-
-Route::get('/admin/users', [
-
-    'uses' => 'AdminUsersController@index',
-    'as' => 'admin.user'
-]);
-
-Route::get('/admin/users/create', [
-
-    'uses' => 'AdminUsersController@create',
-    'as' => 'admin.user.create'
-]);
-
-Route::post('/admin/users/store', [
-
-    'uses' => 'AdminUsersController@store',
-    'as' => 'admin.users.store'
-]);
-
-Route::get('/admin/users/edit/{id}', [
-
-    'uses' => 'AdminUsersController@edit',
-    'as' => 'admin.users.edit'
-
-]);
-
-Route::post('/admin/users/update/{id}', [
-
-    'uses' => 'AdminUsersController@update',
-    'as' => 'admin.users.update'
+});
 
 
-]);
-
-Route::get('/admin/users/roles', [
-
-    'uses' => 'AdminUsersController@roles',
-    'as' => 'admin.users.roles'
 
 
-]);
 
-Route::get('/admin/users/roles/create', [
-
-    'uses' => 'AdminUsersController@rolesCreate',
-    'as' => 'admin.users.role.create'
-
-
-]);
-
-Route::post('/admin/users/roles/store', [
-
-    'uses' => 'AdminUsersController@rolStore',
-    'as' => 'admin.users.role.store'
-]);

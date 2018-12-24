@@ -54,7 +54,7 @@ return [
         ],
 
 
-        'adminuser' => [
+        'adminusers' => [
             'driver' => 'session',
             'provider' => 'adminusers',
         ],
