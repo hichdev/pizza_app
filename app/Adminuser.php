@@ -41,9 +41,5 @@ class Adminuser extends Authenticatable
 
 
 
-    public function address(){
 
-       return $this->belongsTo('App\Address');
-
-    }
 }

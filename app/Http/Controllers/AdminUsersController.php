@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Role;
 use App\Adminuser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -22,7 +23,7 @@ class AdminUsersController extends Controller
     public function index(){
 
 
-        $users = Adminuser::orderBy('created_at', 'desc')->paginate(5);
+        $users = Adminuser::orderBy('firstname', 'desc')->paginate(5);
 
         return view('admin.user.index', ['adminusers'=> $users]);
 
@@ -63,6 +64,8 @@ class AdminUsersController extends Controller
         ]);
 
 
+        Session::flash('success', 'De gebruiker werd aangemaakt');
+
         return redirect()->route('admin.user');
 
 
@@ -102,6 +105,8 @@ class AdminUsersController extends Controller
 
         $user->save();
 
+        Session::flash('success', 'De aanpassingen werden opgeslaan');
+
         return redirect()->route('admin.user');
 
 
@@ -114,6 +119,8 @@ class AdminUsersController extends Controller
 
 
         $user->delete();
+
+        Session::flash('success', 'Gebruiker verwijderd');
 
         return redirect()->route('admin.user');
 

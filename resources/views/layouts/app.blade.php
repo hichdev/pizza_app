@@ -16,6 +16,7 @@
     <meta name="description" content="Able Pro 7.0 Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
     <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="phoenixcoded" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/toastr.min.css') }}">
     <!-- Favicon icon -->
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}" type="image/x-icon">
     <!-- Google font-->
@@ -29,6 +30,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/widget.css') }}">
+
 </head>
 
 <body>
@@ -106,30 +108,27 @@
                             </div>
                         </li>
                         <li class="user-profile header-notification">
-                            <!--div class="dropdown-primary dropdown">
+                            <div class="dropdown-primary dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{ asset('backend/images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
-                                    <span></span>
+                                    <span>Welkom <strong>{{ Auth::user()->firstname }}</strong> </span>
 
                                     <i class="feather icon-chevron-down"></i>
                                 </div>
                                 <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
 
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        <a class="dropdown-item" href="{{ route('admin.logout') }}">
                                                 <i class="feather icon-log-out"></i>
                                                 {{ __('Uitloggen') }}
                                             </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" >
                                                 @csrf
                                             </form>
 
                                     </li>
                                 </ul>
-                            </div!-->
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -155,7 +154,7 @@
 
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
+                                    <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                     <span class="pcoded-mtext">Gebruikers</span>
                                 </a>
                                 <ul class="pcoded-submenu">
@@ -192,12 +191,27 @@
                                     </li>
 
 
-
-
-
                                 </ul>
 
                             </li>
+
+                            <li class="">
+                                <a href="{{ route('admin.customers') }}" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="feather icon-user-x"></i></span>
+                                    <span class="pcoded-mtext">Klanten</span>
+                                </a>
+                            </li>
+
+
+
+                            <li class="">
+                                <a href="{{ route('admin.products') }}" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span>
+                                    <span class="pcoded-mtext">Producten</span>
+                                </a>
+                            </li>
+
+
 
                         </ul>
 
@@ -238,6 +252,22 @@
 <script src="{{ asset('backend/js/vertical/vertical-layout.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/custom-dashboard.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/js/script.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/js/toastr.min.js') }}"></script>
+
+
+<scrip>
+
+    @if(Session::has('success'))
+
+        toastr.success('{{ Session::get('success') }}')
+
+    @endif
+
+
+</scrip>
+
+
+
 </body>
 
 </html>

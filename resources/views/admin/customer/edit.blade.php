@@ -9,7 +9,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-8">
                         <div class="page-header-title">
-                            <h4 class="m-b-10">Wijzig profiel van {{ $user->firstname }}</h4>
+                            <h4 class="m-b-10">Wijzig profiel van {{ $customer->firstname }}</h4>
                         </div>
 
                     </div>
@@ -51,7 +51,7 @@
 
                                     @endif
                                     <div class="card-block">
-                                        <form action="{{ route('admin.users.update', ['id' => $user->id]) }}" method="POST">
+                                        <form action="{{ route('admin.customers.update', ['id' => $customer->id]) }}" method="POST">
 
                                             {{ csrf_field() }}
 
@@ -59,7 +59,7 @@
                                                 <label for="firstname" class="col-sm-2 col-form-label">Voornaam</label>
                                                 <div class="col-sm-10">
                                                     <input id="firstname" name="firstname" type="text" class="form-control form-control-normal"
-                                                           value="{{ $user->firstname }}">
+                                                           value="{{ $customer->firstname }}">
                                                 </div>
                                             </div>
 
@@ -67,7 +67,7 @@
                                                 <label for="lastname" class="col-sm-2 col-form-label">Achternaam</label>
                                                 <div class="col-sm-10">
                                                     <input id="lastname" name="lastname" type="text" class="form-control form-control-normal"
-                                                           value={{ $user->lastname }}>
+                                                           value={{ $customer->lastname }}>
                                                 </div>
                                             </div>
 
@@ -75,35 +75,56 @@
                                                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-10">
                                                     <input id="email" name="email" type="email" class="form-control form-control-normal"
-                                                           value="{{ $user->email }}">
+                                                           value="{{ $customer->email }}">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="password" class="col-sm-2 col-form-label">Kies een wachtwoord</label>
+                                                <label for="mobilephone" class="col-sm-2 col-form-label">Gsm nummer</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" name="password" id="password" class="form-control"
-                                                           placeholder="Kies een wachtwoord">
+                                                    <input id="mobilephone" name="mobilephone" type="text" class="form-control form-control-normal"
+                                                           value="{{ $customer->mobilephone }}">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Rol</label>
+                                                <label for="streetname" class="col-sm-2 col-form-label">Adres</label>
+                                                <div class="col-sm-6">
+                                                    <input id="streetname" name="streetname" type="text" class="form-control form-control-normal"
+                                                           value="{{ $customer->address->straatNaam }}">
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <input id="housenumber" name="housenumber" type="text" class="form-control form-control-normal"
+                                                           value="{{ $customer->address->nummer }}">
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="city" class="col-sm-2 col-form-label">Stad</label>
                                                 <div class="col-sm-10">
-                                                    <select name="role_id" class="form-control">
-
-
-                                                        @foreach($roles as $role)
-
-                                                            <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : '' }}>{{ $role->name }}</option>
-
-                                                        @endforeach
-
-
-
-                                                    </select>
+                                                    <input id="city" name="city" type="text" class="form-control form-control-normal"
+                                                           value="{{ $customer->address->stad }}">
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label for="postalcode" class="col-sm-2 col-form-label">Gsm nummer</label>
+                                                <div class="col-sm-10">
+                                                    <input id="postalcode" name="postalcode" type="text" class="form-control form-control-normal"
+                                                           value="{{ $customer->address->postcode }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="country" class="col-sm-2 col-form-label">Land</label>
+                                                <div class="col-sm-10">
+                                                    <input id="country" name="country" type="text" class="form-control form-control-normal"
+                                                           value="{{ $customer->address->land }}">
+                                                </div>
+                                            </div>
+
+
+
+
 
                                             <div class="form-group row">
                                                 <div class="col-sm-2"> </div>
@@ -115,7 +136,7 @@
 
                                                 <div class="col-sm-5">
 
-                                                    <a href="{{ route('admin.user.delete', ['id' => $user->id]) }}" class="btn btn-danger waves-effect waves-light ">Verwijder profiel</a>
+                                                    <a href="{{ route('admin.customer.delete', ['id' => $customer->id]) }}" class="btn btn-danger waves-effect waves-light ">Verwijder profiel</a>
 
 
                                                 </div>

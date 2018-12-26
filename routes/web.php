@@ -19,6 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/users/logout', [
+
+    'uses'=> 'Auth\LoginController@userlogout',
+    'as' => 'user.logout'
+
+]);
+
 
 Route::prefix('admin')->group(function (){
 
@@ -34,6 +41,13 @@ Route::prefix('admin')->group(function (){
 
         'uses' => 'Auth\AdminLoginController@login',
         'as' => 'admin.login.submit'
+
+    ]);
+
+    Route::get('/logout', [
+
+        'uses'=> 'Auth\AdminLoginController@logout',
+        'as' => 'admin.logout'
 
     ]);
 
@@ -112,6 +126,77 @@ Route::prefix('admin')->group(function (){
         'uses' => 'AdminUsersController@roleDelete',
         'as' => 'admin.users.role.delete'
     ]);
+
+    Route::get('/customers', [
+
+        'uses' => 'AdminCustomersController@index',
+        'as' => 'admin.customers'
+    ]);
+
+    Route::get('/customer/edit/{id}', [
+
+        'uses' => 'AdminCustomersController@edit',
+        'as' => 'admin.customers.edit'
+
+    ]);
+
+    Route::post('/customer/update/{id}', [
+
+        'uses' => 'AdminCustomersController@update',
+        'as' => 'admin.customers.update'
+    ]);
+
+    Route::get('/customer/delete/{id}', [
+
+        'uses' => 'AdminCustomersController@delete',
+        'as' => 'admin.customer.delete'
+    ]);
+
+
+    Route::get('/products', [
+
+        'uses' => 'AdminProductsController@index',
+        'as' => 'admin.products'
+    ]);
+
+
+    Route::get('/products/create', [
+
+        'uses' => 'AdminProductsController@create',
+        'as' => 'admin.product.create'
+
+
+    ]);
+
+    Route::post('/products/store', [
+
+        'uses' => 'AdminProductsController@store',
+        'as' => 'admin.product.store'
+
+
+    ]);
+
+    Route::get('/products/delete/{id}', [
+
+        'uses' => 'AdminProductsController@delete',
+        'as' => 'admin.product.delete'
+    ]);
+
+    Route::get('/products/edit/{id}', [
+
+        'uses' => 'AdminProductsController@edit',
+        'as' => 'admin.product.edit'
+    ]);
+
+    Route::post('/products/update/{id}', [
+
+        'uses' => 'AdminProductsController@update',
+        'as' => 'admin.product.update'
+    ]);
+
+
+
+
 
 
 

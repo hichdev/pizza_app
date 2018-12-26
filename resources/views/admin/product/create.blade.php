@@ -9,7 +9,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-8">
                         <div class="page-header-title">
-                            <h4 class="m-b-10">Wijzig profiel van {{ $user->firstname }}</h4>
+                            <h4 class="m-b-10">Nieuw Product</h4>
                         </div>
 
                     </div>
@@ -30,6 +30,7 @@
                                     <div class="card-header">
                                         <p></p>
                                     </div>
+
                                     @if(count($errors) > 0)
 
                                         <ul class="list-group">
@@ -50,52 +51,53 @@
 
 
                                     @endif
+
                                     <div class="card-block">
-                                        <form action="{{ route('admin.users.update', ['id' => $user->id]) }}" method="POST">
+                                        <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
 
                                             {{ csrf_field() }}
 
                                             <div class="form-group row">
-                                                <label for="firstname" class="col-sm-2 col-form-label">Voornaam</label>
+                                                <label for="name" class="col-sm-2 col-form-label">Product naam</label>
                                                 <div class="col-sm-10">
-                                                    <input id="firstname" name="firstname" type="text" class="form-control form-control-normal"
-                                                           value="{{ $user->firstname }}">
+                                                    <input id="name" name="name" type="text" class="form-control form-control-normal"
+                                                       placeholder="geef een product naam in"   >
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="lastname" class="col-sm-2 col-form-label">Achternaam</label>
+                                                <label for="description" class="col-sm-2 col-form-label">Product beschrijving</label>
                                                 <div class="col-sm-10">
-                                                    <input id="lastname" name="lastname" type="text" class="form-control form-control-normal"
-                                                           value={{ $user->lastname }}>
+                                                    <textarea id="description" name="description" type="text" class="form-control form-control-normal" rows="4" placeholder="bijv.: tomatensaus, kaas, kip,..."></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-10">
-                                                    <input id="email" name="email" type="email" class="form-control form-control-normal"
-                                                           value="{{ $user->email }}">
+                                                <label for="price" class="col-sm-2 col-form-label">prijs</label>
+                                                <div class="col-sm-2">
+                                                    <input id="price" name="price" type="text" class="form-control form-control-normal"
+                                                        placeholder="prijs in euro"   >
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="password" class="col-sm-2 col-form-label">Kies een wachtwoord</label>
+                                                <label class="col-sm-2 col-form-label">Upload Afbeelding</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" name="password" id="password" class="form-control"
-                                                           placeholder="Kies een wachtwoord">
+                                                    <input name="picture" type="file" class="form-control">
                                                 </div>
                                             </div>
 
+
+
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Rol</label>
+                                                <label class="col-sm-2 col-form-label">Categorie</label>
                                                 <div class="col-sm-10">
-                                                    <select name="role_id" class="form-control">
+                                                    <select name="category_id" class="form-control">
 
 
-                                                        @foreach($roles as $role)
+                                                        @foreach($categories as $category)
 
-                                                            <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : '' }}>{{ $role->name }}</option>
+                                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
 
                                                         @endforeach
 
@@ -108,18 +110,9 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-2"> </div>
 
-                                                <div class="col-sm-5">
-                                                    <button class="btn btn-primary waves-effect waves-light " type="submit" >Wijzigingen opslaan</button>
+                                                <div class="col-sm-10">
+                                                    <button class="btn btn-primary waves-effect waves-light " type="submit" >opslaan</button>
                                                 </div>
-
-
-                                                <div class="col-sm-5">
-
-                                                    <a href="{{ route('admin.user.delete', ['id' => $user->id]) }}" class="btn btn-danger waves-effect waves-light ">Verwijder profiel</a>
-
-
-                                                </div>
-
 
                                             </div>
 
@@ -136,7 +129,9 @@
                 </div>
             </div>
             <!-- Main-body end -->
+            <div id="styleSelector">
 
+            </div>
         </div>
     </div>
     </div>
