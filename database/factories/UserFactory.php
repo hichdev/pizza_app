@@ -22,3 +22,13 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Product::class, function (Faker $faker) {
+    return [
+        'name' => $faker->sentence(3),
+        'picture' => 'backend/images/pizza_margarita.jpg',
+        'description' => $faker->paragraph(1),
+        'category_id' => $faker->numberBetween(1, 3),
+        'price' => $faker->numberBetween(8, 15)
+    ];
+});

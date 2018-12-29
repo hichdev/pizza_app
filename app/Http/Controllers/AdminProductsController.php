@@ -70,8 +70,6 @@ class AdminProductsController extends Controller
 
 
 
-
-
        Session::flash('success', 'Product opgeslaan');
 
        return redirect()->route('admin.products');
@@ -80,21 +78,6 @@ class AdminProductsController extends Controller
     }
 
 
-
-    public function delete($id){
-
-        $product = Product::find($id);
-
-
-        $product->delete();
-
-        Session::flash('success', 'Product verwijderd');
-
-        return redirect()->route('admin.products');
-
-
-
-    }
 
     public function edit($id){
 
@@ -145,6 +128,31 @@ class AdminProductsController extends Controller
 
 
         Session::flash('success', 'Product opgeslaan');
+
+        return redirect()->route('admin.products');
+
+
+    }
+
+
+
+
+    public function delete($id){
+
+        $product = Product::find($id);
+
+
+        if(file_exists($product->picture)){
+
+            unlink($product->picture);
+
+
+        }
+
+
+        $product->delete();
+
+        Session::flash('success', 'Product verwijderd');
 
         return redirect()->route('admin.products');
 

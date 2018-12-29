@@ -12,12 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/menu', [
+
+    'uses' => 'FrontendMenuController@index',
+    'as' =>'menu'
+
+
+]);
 
 Route::get('/users/logout', [
 

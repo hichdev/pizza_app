@@ -10,7 +10,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-8">
                         <div class="page-header-title">
-                            <h4 class="m-b-10">Product List</h4>
+                            <h4 class="m-b-10">Product Lijst</h4>
                         </div>
 
                     </div>
@@ -27,7 +27,7 @@
                             <!-- Product list card start -->
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Product List</h5>
+                                    <h5>Product Lijst</h5>
                                     <a href="{{ route('admin.product.create') }}" class="btn btn-primary waves-effect waves-light float-right d-inline-block md-trigger" data-modal="modal-13"> <i class="icofont icofont-plus m-r-5"></i> Nieuw product</a>
                                 </div>
                                 <div class="card-block">
@@ -53,14 +53,14 @@
                                                             </td>
                                                             <td class="pro-name">
                                                                 <h6><a href="{{ route('admin.product.edit', $product->id) }}">{{ $product->name }}</a>  </h6>
-                                                                <span>{{ $product->description }}</span>
+                                                                <span>{{ str_limit($product->description, 20)  }}</span>
                                                             </td>
                                                             <td>{{ $product->category->name }}</td>
                                                             <td>
                                                                 <label >€ {{ $product->price }}</label>
                                                             </td>
                                                             <td class="action-icon">
-                                                                <a href="{{ route('admin.product.delete', ['id' => $product->id]) }}" class="btn btn-danger waves-effect waves-light btn-block">Verwijder product</a>
+                                                                <a href="{{ route('admin.product.delete', ['id' => $product->id]) }}" class="btn btn-danger col-sm-6 waves-effect waves-light btn-block">Verwijder product</a>
                                                             </td>
                                                         </tr>
 
@@ -73,10 +73,22 @@
 
 
                                                     </tbody>
+
+
+
+
+
+
+
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="card-footer text-center pagination">
+
+                                    {{ $products->links() }}
+
                                 </div>
                             </div>
                             <!-- Product list card end -->
