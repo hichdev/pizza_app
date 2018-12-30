@@ -11,15 +11,15 @@
 
 **********************************************************************************/
 
-@import url(/frontend/plugins/font-awesome.min.css);
-@import url(/frontend/plugins/slick.min.css);
-@import url(/frontend/plugins/fakeloader.css);
-@import url(/frontend/plugins/pe-icon-7-stroke.css);
-@import url(/frontend/plugins/material-design-iconic-font.min.css);
-@import url(/frontend/plugins/animation.css);
-@import url(/frontend/plugins/jquery.yu2fvl.css);
-@import url(/frontend/plugins/owl.carousel.min.css);
-@import url(/frontend/plugins/owl.theme.default.min.css);
-@import url(/frontend/plugins/lightbox.css);
-@import url(/frontend/plugins/jquery-ui.min.css);
-@import url(/frontend/plugins/mainmenu.css);
+@import url(plugins/font-awesome.min.css);
+@import url(plugins/slick.min.css);
+@import url(plugins/fakeloader.css);
+@import url(plugins/pe-icon-7-stroke.css);
+@import url(plugins/material-design-iconic-font.min.css);
+@import url(plugins/animation.css);
+@import url(plugins/jquery.yu2fvl.css);
+@import url(plugins/owl.carousel.min.css);
+@import url(plugins/owl.theme.default.min.css);
+@import url(plugins/lightbox.css);
+@import url(plugins/jquery-ui.min.css);
+@import url(plugins/mainmenu.css);

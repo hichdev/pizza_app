@@ -57,7 +57,7 @@
                                                 <h2>{{ $product->name }}</h2>
                                                 <p>{{ $product->description }}</p>
                                                 <div class="list__btn">
-                                                    <a class="food__btn grey--btn theme--hover" href="menu-details.html">Order Now</a>
+                                                    <a class="food__btn grey--btn theme--hover" href="{{ route('AddToCart',['id' => $product->id] ) }}">Order Now</a>
                                                 </div>
                                             </div>
                                             <div class="food__rating">

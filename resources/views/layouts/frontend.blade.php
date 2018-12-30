@@ -253,129 +253,164 @@
     </footer>
     <!-- End Footer Area -->
     <!-- Login Form -->
+    @guest
+
     <div class="accountbox-wrapper">
         <div class="accountbox text-left">
             <ul class="nav accountbox__filters" id="myTab" role="tablist">
+
+
                 <li>
                     <a class="active" id="log-tab" data-toggle="tab" href="#log" role="tab" aria-controls="log" aria-selected="true">Login</a>
                 </li>
+                @if(Route::has('register'))
+
                 <li>
                     <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
                 </li>
+
+                @endif
             </ul>
             <div class="accountbox__inner tab-content" id="myTabContent">
                 <div class="accountbox__login tab-pane fade show active" id="log" role="tabpanel" aria-labelledby="log-tab">
-                    <form action="#">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
                         <div class="single-input">
-                            <input class="cr-round--lg" type="text" placeholder="User name or email">
+                            <input class="cr-round--lg form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" type="email"
+                                   placeholder="Email" name="email"
+                                   value="{{ old('email') }}" required autofocus>
+
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
                         </div>
                         <div class="single-input">
-                            <input class="cr-round--lg" type="password" placeholder="Password">
+                            <input class="cr-round--lg form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password"
+                                   type="password" placeholder="Wachtwoord"name="password" required>
+
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
                         </div>
+
+
+
+
                         <div class="single-input">
-                            <button type="submit" class="food__btn"><span>Go</span></button>
+                            <button type="submit" class="food__btn"><span>Login</span></button>
                         </div>
-                        <div class="accountbox-login__others">
-                            <h6>Or login with</h6>
-                            <div class="social-icons">
-                                <ul>
-                                    <li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                    <li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                    <li class="pinterest"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+
                     </form>
                 </div>
                 <div class="accountbox__register tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <form action="#">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
                         <div class="single-input">
-                            <input class="cr-round--lg" type="text" placeholder="User name">
+                            <input class="cr-round--lg" id="fistname" name="firstname" type="text" placeholder="Voornaam" value="{{ old('firstname') }}" required autofocus>
                         </div>
                         <div class="single-input">
-                            <input class="cr-round--lg" type="email" placeholder="Email address">
+                            <input class="cr-round--lg" id="lastname" name="lastname" type="text" placeholder="Achternaam" value="{{ old('lastname') }}" required autofocus>
                         </div>
                         <div class="single-input">
-                            <input class="cr-round--lg" type="password" placeholder="Password">
+                            <input class="cr-round--lg" id="mobilephone" name="mobilephone" type="number" placeholder="Gsm nummer" value="{{ old('mobilephone') }}" required autofocus>
                         </div>
                         <div class="single-input">
-                            <input class="cr-round--lg" type="password" placeholder="Confirm password">
+                            <input class="cr-round--lg" id="email"  name="email" type="email" placeholder="Emailadres" value="{{ old('email') }}" required>
+                        </div>
+
+                        <div class="single-input">
+                            <input class="cr-round--lg" id="straatNaam" name="straatNaam" type="text" placeholder="Straatnaam" value="{{ old('straatNaam') }}" required autofocus>
+                        </div>
+
+                        <div class="single-input">
+                            <input class="cr-round--lg" id="nummer" name="nummer" type="number" placeholder="Nummer" value="{{ old('nummer') }}" required autofocus>
+                        </div>
+
+                        <div class="single-input">
+                            <input class="cr-round--lg" id="postcode" name="postcode" type="number" placeholder="Postcode" value="{{ old('postcode') }}" required autofocus>
+                        </div>
+                        <div class="single-input">
+                            <input class="cr-round--lg" id="stad" name="stad" type="text" placeholder="Stad" value="{{ old('stad') }}" required autofocus>
+                        </div>
+
+                        <div class="single-input">
+                            <input class="cr-round--lg" id="land" name="land" type="text" placeholder="Land" value="{{ old('land') }}" required autofocus>
+                        </div>
+
+                        <div class="single-input">
+                            <input class="cr-round--lg" id="password" name="password" type="password" placeholder="Wachtwoord" required>
+                        </div>
+                        <div class="single-input">
+                            <input class="cr-round--lg" id="password-confirm" name="password_confirmation" type="password" placeholder="Bevestig wachtwoord">
                         </div>
                         <div class="single-input">
                             <button type="submit" class="food__btn"><span>Sign Up</span></button>
                         </div>
                     </form>
-                </div>
+
+
+
                 <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
             </div>
         </div>
     </div><!-- //Login Form -->
+@endguest
     <!-- Cartbox -->
     <div class="cartbox-wrap">
         <div class="cartbox text-right">
             <button class="cartbox-close"><i class="zmdi zmdi-close"></i></button>
             <div class="cartbox__inner text-left">
                 <div class="cartbox__items">
+
+                    @if($cartItems)
+
+                @foreach($cartItems->items as $item )
+
                     <!-- Cartbox Single Item -->
                     <div class="cartbox__item">
                         <div class="cartbox__item__thumb">
                             <a href="product-details.html">
-                                <img src="images/blog/sm-img/1.jpg" alt="small thumbnail">
+                                <img src="{{ $item['data']['picture'] }}" alt="small thumbnail">
                             </a>
                         </div>
                         <div class="cartbox__item__content">
-                            <h5><a href="product-details.html" class="product-name">Vanila Muffin</a></h5>
-                            <p>Qty: <span>01</span></p>
-                            <span class="price">$15</span>
+                            <h5><p>{{ $item['data']['name'] }}</p></h5>
+                            <p>Aantal <span>{{ $item['quantity'] }}</span></p>
+                            <span class="price">€ {{ $item['data']['price'] }}</span>
                         </div>
                         <button class="cartbox__item__remove">
                             <i class="fa fa-trash"></i>
                         </button>
                     </div><!-- //Cartbox Single Item -->
-                    <!-- Cartbox Single Item -->
-                    <div class="cartbox__item">
-                        <div class="cartbox__item__thumb">
-                            <a href="product-details.html">
-                                <img src="images/blog/sm-img/2.jpg" alt="small thumbnail">
-                            </a>
-                        </div>
-                        <div class="cartbox__item__content">
-                            <h5><a href="product-details.html" class="product-name">Wheat Bread</a></h5>
-                            <p>Qty: <span>01</span></p>
-                            <span class="price">$25</span>
-                        </div>
-                        <button class="cartbox__item__remove">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div><!-- //Cartbox Single Item -->
-                    <!-- Cartbox Single Item -->
-                    <div class="cartbox__item">
-                        <div class="cartbox__item__thumb">
-                            <a href="product-details.html">
-                                <img src="images/blog/sm-img/3.jpg" alt="small thumbnail">
-                            </a>
-                        </div>
-                        <div class="cartbox__item__content">
-                            <h5><a href="product-details.html" class="product-name">Mixed Fruits Pie</a></h5>
-                            <p>Qty: <span>01</span></p>
-                            <span class="price">$30</span>
-                        </div>
-                        <button class="cartbox__item__remove">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div><!-- //Cartbox Single Item -->
+
+                    @endforeach
+
+
                 </div>
                 <div class="cartbox__total">
                     <ul>
-                        <li><span class="cartbox__total__title">Subtotal</span><span class="price">$70</span></li>
-                        <li class="shipping-charge"><span class="cartbox__total__title">Shipping Charge</span><span class="price">$05</span></li>
-                        <li class="grandtotal">Total<span class="price">$75</span></li>
+                        <li class="grandtotal">Total<span class="price">{{ $cartItems->totalPrice }}</span></li>
                     </ul>
                 </div>
                 <div class="cartbox__buttons">
-                    <a class="food__btn" href="cart.html"><span>View cart</span></a>
+                    <a class="food__btn" href="{{ route('cartproducts') }}"><span>View cart</span></a>
                     <a class="food__btn" href="checkout.html"><span>Checkout</span></a>
                 </div>
+
+                @else
+
+                    <h2>Geen Producten gekozen, gelieve eerst een product toe te voegen</h2>
+
+
+
+                @endif
+
+
+
             </div>
         </div>
     </div><!-- //Cartbox -->

@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -64,9 +67,55 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'firstname' => $data['firstname'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'mobilephone' => $data['mobilephone'],
+            'address->straatNaam' => $data['straatNaam'],
+            'address->nummer' => $data['nummer'],
+            'address->postcode' => $data['postcode'],
+            'address->stad' => $data['stad'],
+            'address->land' => $data['land'],
+            'password' => Hash::make($data['password'])
+
         ]);
     }
+
+//    public function showRegistrationForm()
+//    {
+//        $cart = Session::get('cart');
+//
+//        return view('auth.register')->with('cartItems', $cart);
+//    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+//     */
+//
+//    public function register(Request $request)
+//    {
+//
+//        dump($request->all());
+//
+//
+////        $this->validator($request->all())->validate();
+////
+////        event(new Registered($user = $this->create($request->all())));
+////
+////        $this->guard()->login($user);
+////
+////        return $this->registered($request, $user)
+////            ?: redirect($this->redirectPath());
+//    }
+//
+//
+//    protected function registered(Request $request, $user)
+//    {
+//        //
+//    }
+
+
+
 }

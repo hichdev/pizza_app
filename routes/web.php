@@ -11,21 +11,46 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+//Route::get('/', function () {
+//    return view('home');
+//});
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/menu', [
 
     'uses' => 'FrontendMenuController@index',
     'as' =>'menu'
 
+]);
+
+Route::get('cart', [
+
+    'uses' => 'FrontendCartController@showCart',
+    'as' => 'cartproducts'
 
 ]);
+
+
+Route::get('product/addtocart/{id}', [
+
+    'uses' => 'FrontendCartController@addToCart',
+    'as' => 'AddToCart'
+
+]);
+
+Route::get('product/deleteFromCart/{id}', [
+
+    'uses' => 'FrontendCartController@deleteItemFromCart',
+    'as' => 'deleteItemFromCart'
+
+]);
+
+
+
+
 
 Route::get('/users/logout', [
 
@@ -33,6 +58,8 @@ Route::get('/users/logout', [
     'as' => 'user.logout'
 
 ]);
+
+
 
 
 Route::prefix('admin')->group(function (){
