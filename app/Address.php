@@ -10,7 +10,7 @@ class Address extends Model
 
     protected $fillable = [
 
-        'straatnaam', 'nummer', 'postcode', 'stad', 'land'
+        'straatNaam', 'nummer', 'postcode', 'stad', 'land'
 
     ];
 

@@ -21,8 +21,6 @@ class FrontendMenuController extends Controller
         return view('menu', ['categories' => $categories])->with('cartItems', $cart);
 
 
-
-
     }
 
 

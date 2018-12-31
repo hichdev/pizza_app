@@ -23,14 +23,12 @@ Route::get('/menu', [
 
     'uses' => 'FrontendMenuController@index',
     'as' =>'menu'
-
 ]);
 
 Route::get('cart', [
 
     'uses' => 'FrontendCartController@showCart',
     'as' => 'cartproducts'
-
 ]);
 
 
@@ -38,25 +36,32 @@ Route::get('product/addtocart/{id}', [
 
     'uses' => 'FrontendCartController@addToCart',
     'as' => 'AddToCart'
-
 ]);
 
 Route::get('product/deleteFromCart/{id}', [
 
     'uses' => 'FrontendCartController@deleteItemFromCart',
     'as' => 'deleteItemFromCart'
-
 ]);
 
 
+Route::get('product/createOrder', [
 
+    'uses' => 'FrontendCartController@createOrder',
+    'as' => 'createOrder'
+]);
+
+Route::get('product/checkout', [
+
+    'uses' => 'FrontendCartController@checkoutProducts',
+    'as' => 'checkoutProducts'
+]);
 
 
 Route::get('/users/logout', [
 
     'uses'=> 'Auth\LoginController@userlogout',
     'as' => 'user.logout'
-
 ]);
 
 

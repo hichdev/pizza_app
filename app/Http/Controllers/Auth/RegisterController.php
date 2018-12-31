@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Address;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
@@ -31,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,9 +53,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'mobilephone' =>['required', 'digits:10'],
+            'streetname' => ['required', 'string', 'max:255'],
+            'housenumber' => ['required', 'integer'],
+            'city'=> ['required', 'string', 'max:255'],
+            'postalcode' => ['required', 'integer', 'digits:4' ],
+            'country' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+
         ]);
     }
 
@@ -66,55 +75,75 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
+
+
+      $address = Address::create([
+            'straatNaam' => $data['streetname'],
+            'nummer' => $data['housenumber'],
+            'postcode' => $data['postalcode'],
+            'stad' => $data['city'],
+            'land' => $data['country'],
+
+        ]);
+
+      $address->save();
+
+
+
+
+
         return User::create([
             'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
             'email' => $data['email'],
             'mobilephone' => $data['mobilephone'],
-            'address->straatNaam' => $data['straatNaam'],
-            'address->nummer' => $data['nummer'],
-            'address->postcode' => $data['postcode'],
-            'address->stad' => $data['stad'],
-            'address->land' => $data['land'],
+            'address_id' => $address->id,
             'password' => Hash::make($data['password'])
 
         ]);
     }
 
-//    public function showRegistrationForm()
-//    {
-//        $cart = Session::get('cart');
-//
-//        return view('auth.register')->with('cartItems', $cart);
-//    }
+    public function showRegistrationForm()
+    {
+        $cart = Session::get('cart');
+
+        return view('auth.register')->with('cartItems', $cart);
+    }
 
     /**
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-//     */
-//
-//    public function register(Request $request)
-//    {
-//
-//        dump($request->all());
-//
-//
-////        $this->validator($request->all())->validate();
-////
-////        event(new Registered($user = $this->create($request->all())));
-////
-////        $this->guard()->login($user);
-////
-////        return $this->registered($request, $user)
-////            ?: redirect($this->redirectPath());
-//    }
-//
-//
-//    protected function registered(Request $request, $user)
-//    {
-//        //
-//    }
+     */
+
+    public function register(Request $request)
+    {
+
+
+
+
+
+
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+
+
+    protected function registered(Request $request, $user)
+    {
+        //
+    }
 
 
 

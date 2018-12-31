@@ -10,12 +10,8 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">cart page</h2>
-                            <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">Home</a>
-                                <span class="brd-separetor"><i class="zmdi zmdi-long-arrow-right"></i></span>
-                                <span class="breadcrumb-item active">cart page</span>
-                            </nav>
+                            <h2 class="bradcaump-title">Mijn keuze</h2>
+
                         </div>
                     </div>
                 </div>
@@ -49,7 +45,7 @@
                                     <td class="product-thumbnail"><a href="#"><img src="{{ $item['data']['picture'] }}" alt="product img" /></a></td>
                                     <td class="product-name"><p>{{ $item['data']['name'] }}</td>
                                     <td class="product-price"><span class="amount">€ {{ $item['data']['price'] }}</span></td>
-                                    <td class="product-quantity"><input type="number" value="{{ $item['quantity'] }}" /></td>
+                                    <td class="product-quantity">{{ $item['quantity'] }}</td>
                                     <td class="product-subtotal">{{ $item['totalSinglePrice'] }}</td>
                                     <td class="product-remove"><a href="{{ route('deleteItemFromCart', ['id'=> $item['data']['id']]) }}">X</a></td>
                                 </tr>
@@ -62,10 +58,8 @@
                     </form>
                     <div class="cartbox__btn">
                         <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-                            <li><a href="#">Coupon Code</a></li>
-                            <li><a href="#">Apply Code</a></li>
-                            <li><a href="#">Update Cart</a></li>
-                            <li><a href="#">Check Out</a></li>
+
+                            <li><a href="{{ route('checkoutProducts') }}">Afrekenen</a></li>
                         </ul>
                     </div>
                 </div>

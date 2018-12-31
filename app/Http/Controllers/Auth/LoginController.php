@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -45,6 +46,17 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+    public function showLoginForm()
+    {
+
+        $cart = Session::get('cart');
+
+        return view('auth.login')->with('cartItems', $cart);
+
+
+    }
+
 
 
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class FrontendCartController extends Controller
@@ -51,6 +53,11 @@ class FrontendCartController extends Controller
         return redirect()->route('menu');
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteItemFromCart(Request $request, $id){
 
         $cart = $request->session()->get('cart');
@@ -69,7 +76,51 @@ class FrontendCartController extends Controller
 
         $request->session()->put('cart',$updatedCart);
 
+
+
         return redirect()->back();
+
+
+    }
+
+
+    public function createOrder(){
+
+        $cart = Session::get('cart');
+
+        if ($cart){
+
+            $date = date('Y-m-d H:i:s');
+            $newOrderArray = array('user_id' => Auth::User()->id, 'date' => $date ,'status_id' => 1, 'price' => $cart->totalPrice  );
+            $create_order = DB::table('orders')->insert($newOrderArray);
+            $order_id = DB::getPdo()->lastInsertId();
+
+
+            foreach($cart->items as $cart_item){
+
+                $item_id = $cart_item['data']['id'];
+                $item_name = $cart_item['data']['name'];
+                $item_price = $cart_item['data']['price'];
+                $newItemsCurrentOrder = array('item_id' => $item_id, 'order_id' => $order_id, 'item_name' => $item_name, 'item_price' => $item_price);
+                $created_order_items = DB::table('order_items')->insert($newItemsCurrentOrder);
+
+            }
+
+            Session::forget('cart');
+            Session::flush();
+            return redirect()->route('menu');
+
+        }
+
+    }
+
+    public function checkoutProducts(){
+
+        $cart = Session::get('cart');
+
+        return view('checkoutProducts')->with('cartItems', $cart);
+
+
 
 
     }

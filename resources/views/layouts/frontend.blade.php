@@ -77,15 +77,36 @@
 
                         </div>
                     </div>
+
                     <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
                         <div class="header__right d-flex justify-content-end">
+                            @guest()
                             <div class="log__in">
                                 <a class="accountbox-trigger" href="#"><i class="zmdi zmdi-account-o"></i></a>
                             </div>
+
+                                @else
+
+                                <div class="log__in">
+                                    <a class="accountbox-trigger" href="#">Profiel</a>
+                                </div>
+
+                            @endguest
                             <div class="shopping__cart">
                                 <a class="minicart-trigger" href="#"><i class="zmdi zmdi-shopping-basket"></i></a>
                                 <div class="shop__qun">
-                                    <span>02</span>
+
+                                    @if($cartItems)
+
+                                        <span> </span>
+
+
+                                    @else
+
+                                        <span>0</span>
+
+
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -253,6 +274,10 @@
     </footer>
     <!-- End Footer Area -->
     <!-- Login Form -->
+
+
+
+
     @guest
 
     <div class="accountbox-wrapper">
@@ -415,12 +440,15 @@
         </div>
     </div><!-- //Cartbox -->
 </div><!-- //Main wrapper -->
-
+</div>
 <!-- JS Files -->
 <script src="{{ asset('frontend/js/vendor/jquery-3.2.1.min.js')}}"></script>
 <script src="{{ asset('frontend/js/popper.min.js')}}"></script>
 <script src="{{ asset('frontend/js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('frontend/js/plugins.js')}}"></script>
 <script src="{{ asset('frontend/js/active.js')}}"></script>
+
+
+
 </body>
 </html>
