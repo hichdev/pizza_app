@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -55,6 +55,11 @@ class LoginController extends Controller
         return view('auth.login')->with('cartItems', $cart);
 
 
+    }
+
+    protected function redirectTo()
+    {
+        return url()->previous();
     }
 
 

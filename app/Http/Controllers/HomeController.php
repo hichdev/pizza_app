@@ -24,6 +24,22 @@ class HomeController extends Controller
     {
         $cart = Session::get('cart');
 
-        return view('home')->with('cartItems', $cart);
+
+
+        if ($cart){
+
+            $quantity = $cart->totalQuantity;
+
+            return view('home')->with('cartItems', $cart)->with('quantity', $quantity);
+
+
+        }else{
+
+            return view('home')->with('cartItems', $cart);
+
+        }
+
+
+
     }
 }

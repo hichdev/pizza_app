@@ -12,6 +12,13 @@ class StatusesTableSeeder extends Seeder
     public function run()
     {
 
+        DB::table('statuses')->insert([
+            'name' => 'wachten op betaling',
+        ]);
+
+        DB::table('statuses')->insert([
+            'name' => 'betaald',
+        ]);
 
         DB::table('statuses')->insert([
             'name' => 'in behandeling',

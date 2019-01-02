@@ -57,6 +57,22 @@ Route::get('product/checkout', [
     'as' => 'checkoutProducts'
 ]);
 
+Route::post('product/createNewOrder/', [
+
+    'uses' => 'FrontendCartController@createNewOrder',
+    'as' => 'createNewOrder'
+
+
+]);
+
+Route::get('payment/paymentpage', [
+
+    'uses' => 'PaymentsController@showPaymentPage',
+    'as' => 'showPaymentPage'
+
+
+]);
+
 
 Route::get('/users/logout', [
 

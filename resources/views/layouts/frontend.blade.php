@@ -98,7 +98,7 @@
 
                                     @if($cartItems)
 
-                                        <span> </span>
+                                        <span> {{ $quantity }} </span>
 
 
                                     @else
@@ -278,112 +278,6 @@
 
 
 
-    @guest
-
-    <div class="accountbox-wrapper">
-        <div class="accountbox text-left">
-            <ul class="nav accountbox__filters" id="myTab" role="tablist">
-
-
-                <li>
-                    <a class="active" id="log-tab" data-toggle="tab" href="#log" role="tab" aria-controls="log" aria-selected="true">Login</a>
-                </li>
-                @if(Route::has('register'))
-
-                <li>
-                    <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
-                </li>
-
-                @endif
-            </ul>
-            <div class="accountbox__inner tab-content" id="myTabContent">
-                <div class="accountbox__login tab-pane fade show active" id="log" role="tabpanel" aria-labelledby="log-tab">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <div class="single-input">
-                            <input class="cr-round--lg form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" type="email"
-                                   placeholder="Email" name="email"
-                                   value="{{ old('email') }}" required autofocus>
-
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                        <div class="single-input">
-                            <input class="cr-round--lg form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password"
-                                   type="password" placeholder="Wachtwoord"name="password" required>
-
-                            @if ($errors->has('password'))
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-
-
-
-
-                        <div class="single-input">
-                            <button type="submit" class="food__btn"><span>Login</span></button>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="accountbox__register tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="fistname" name="firstname" type="text" placeholder="Voornaam" value="{{ old('firstname') }}" required autofocus>
-                        </div>
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="lastname" name="lastname" type="text" placeholder="Achternaam" value="{{ old('lastname') }}" required autofocus>
-                        </div>
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="mobilephone" name="mobilephone" type="number" placeholder="Gsm nummer" value="{{ old('mobilephone') }}" required autofocus>
-                        </div>
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="email"  name="email" type="email" placeholder="Emailadres" value="{{ old('email') }}" required>
-                        </div>
-
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="straatNaam" name="straatNaam" type="text" placeholder="Straatnaam" value="{{ old('straatNaam') }}" required autofocus>
-                        </div>
-
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="nummer" name="nummer" type="number" placeholder="Nummer" value="{{ old('nummer') }}" required autofocus>
-                        </div>
-
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="postcode" name="postcode" type="number" placeholder="Postcode" value="{{ old('postcode') }}" required autofocus>
-                        </div>
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="stad" name="stad" type="text" placeholder="Stad" value="{{ old('stad') }}" required autofocus>
-                        </div>
-
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="land" name="land" type="text" placeholder="Land" value="{{ old('land') }}" required autofocus>
-                        </div>
-
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="password" name="password" type="password" placeholder="Wachtwoord" required>
-                        </div>
-                        <div class="single-input">
-                            <input class="cr-round--lg" id="password-confirm" name="password_confirmation" type="password" placeholder="Bevestig wachtwoord">
-                        </div>
-                        <div class="single-input">
-                            <button type="submit" class="food__btn"><span>Sign Up</span></button>
-                        </div>
-                    </form>
-
-
-
-                <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
-            </div>
-        </div>
-    </div><!-- //Login Form -->
-@endguest
     <!-- Cartbox -->
     <div class="cartbox-wrap">
         <div class="cartbox text-right">

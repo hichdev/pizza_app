@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->date('date');
             $table->integer('status_id');
+            $table->text('delivery');
+            $table->text('payment_methode');
             $table->decimal('price', 8,2);
 
         });

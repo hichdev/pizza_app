@@ -18,7 +18,22 @@ class FrontendMenuController extends Controller
 
         $cart = Session::get('cart');
 
-        return view('menu', ['categories' => $categories])->with('cartItems', $cart);
+        if ($cart){
+
+
+            $quantity = $cart->totalQuantity;
+
+            return view('menu', ['categories' => $categories])->with('cartItems', $cart)->with('quantity', $quantity);
+
+
+
+
+        }else{
+
+            return view('menu', ['categories' => $categories])->with('cartItems', $cart);
+
+        }
+
 
 
     }
