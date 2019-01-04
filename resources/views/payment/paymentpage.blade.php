@@ -54,7 +54,7 @@
 
                             <li><p class="strong">Totaal bestelling</p><p class="strong">€ {{ $payment_info['price'] }} </p></li>
 
-                            <li><button class="food__btn">Betaal bestelling</button></li>
+                            <li><a id="paypal-button"></a></li>
 
                         </ul>
 
@@ -75,24 +75,52 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @endsection
+
+
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+    paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+            sandbox: 'AWzxZt70OcDru9KtuGC2Th7yZasyDPlIjw69-kWex94SnOD99KkjuMbXF105v1WUcvPM_6gbUTJAJzvt',
+            production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+            size: 'small',
+            color: 'gold',
+            shape: 'pill',
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // Set up a payment
+        payment: function(data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                    amount: {
+                        total: "{{ $payment_info['price'] }}",
+                        currency: 'EUR'
+                    }
+                }]
+            });
+        },
+        // Execute the payment
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                // Show a confirmation message to the buyer
+                window.alert('Thank you for your purchase!');
+                console.log(data);
+            });
+        }
+    }, '#paypal-button');
+
+</script>
 
 
 

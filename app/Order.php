@@ -8,6 +8,8 @@ class Order extends Model
 {
     //
 
+    public $timestamps = false;
+
 
     public function user(){
 
@@ -15,6 +17,19 @@ class Order extends Model
 
 
     }
+
+    public function status(){
+
+    return $this->belongsTo('App\Status');
+
+    }
+
+
+
+
+
+
+
 
 
 }

@@ -16,13 +16,14 @@
     <meta name="description" content="Able Pro 7.0 Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
     <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="phoenixcoded" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/toastr.min.css') }}">
+
     <!-- Favicon icon -->
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}" type="image/x-icon">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="{{ asset(('backend/bootstrap/css/bootstrap.min.css')) }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/toastr.min.css') }}">
     <!-- waves.css -->
     <link rel="stylesheet" href="{{ asset('backend/waves/css/waves.min.css') }}" type="text/css" media="all">
     <!-- feather icon -->
@@ -30,6 +31,8 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/widget.css') }}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 </head>
 
@@ -55,58 +58,8 @@
                 <div class="navbar-container container-fluid">
 
                     <ul class="nav-right">
-                        <li class="header-notification">
-                            <div class="dropdown-primary dropdown">
-                                <div class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="feather icon-bell"></i>
-                                    <span class="badge bg-c-red">5</span>
-                                </div>
-                                <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                    <li>
-                                        <h6>Notifications</h6>
-                                        <label class="label label-danger">New</label>
-                                    </li>
-                                    <li>
-                                        <div class="media">
-                                            <img class="img-radius" src="{{ asset('backend/images/avatar-4.jpg') }}" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <h5 class="notification-user">John Doe</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                <span class="notification-time">30 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="media">
-                                            <img class="img-radius" src="{{ asset('backend/images/avatar-3.jpg') }}" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <h5 class="notification-user">Joseph William</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                <span class="notification-time">30 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="media">
-                                            <img class="img-radius" src="{{ asset('backend/backend/images/avatar-4.jpg') }}" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <h5 class="notification-user">Sara Soudein</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                <span class="notification-time">30 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="header-notification">
-                            <div class="dropdown-primary dropdown">
-                                <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
-                                    <i class="feather icon-message-square"></i>
-                                    <span class="badge bg-c-green">3</span>
-                                </div>
-                            </div>
-                        </li>
+
+
                         <li class="user-profile header-notification">
                             <div class="dropdown-primary dropdown">
                                 <div class="dropdown-toggle" data-toggle="dropdown">
@@ -145,12 +98,21 @@
 
                         <div class="pcoded-navigation-label">Navigation</div>
                         <ul class="pcoded-item pcoded-left-item">
+
+
+
+
+
+                            @if(Auth::user()->role->name == 'administrator')
+
                             <li class="">
                                 <a href="{{ route('admin.dashboard') }}" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                     <span class="pcoded-mtext">Dashboard</span>
                                 </a>
                             </li>
+
+
 
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -206,8 +168,17 @@
 
                             <li class="">
                                 <a href="{{ route('admin.products') }}" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span>
+                                    <span class="pcoded-micon"><i class="fas fa-utensils"></i></span>
                                     <span class="pcoded-mtext">Producten</span>
+                                </a>
+                            </li>
+
+                            @endif
+
+                            <li class="">
+                                <a href="{{ route('admin.order.index') }}" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span>
+                                    <span class="pcoded-mtext">Bestellingen</span>
                                 </a>
                             </li>
 
@@ -234,6 +205,7 @@
 <script type="text/javascript" src="{{ asset('backend/jquery-ui/js/jquery-ui.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/popper.js/js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/toastr.min.js') }}"></script>
 <!-- waves js -->
 <script src="{{ asset('backend/waves/js/waves.min.js') }}"></script>
 <!-- jquery slimscroll js -->
@@ -252,7 +224,7 @@
 <script src="{{ asset('backend/js/vertical/vertical-layout.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/custom-dashboard.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/js/script.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('backend/js/toastr.min.js') }}"></script>
+
 
 
 <scrip>

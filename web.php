@@ -116,7 +116,6 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/', [
 
-        'middleware' => 'admin',
         'uses' => 'BackendController@dashboard',
         'as' => 'admin.dashboard'
 
@@ -124,28 +123,24 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/users', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@index',
         'as' => 'admin.user'
     ]);
 
     Route::get('/users/create', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@create',
         'as' => 'admin.user.create'
     ]);
 
     Route::post('/users/store', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@store',
         'as' => 'admin.users.store'
     ]);
 
     Route::get('/users/edit/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@edit',
         'as' => 'admin.users.edit'
 
@@ -153,7 +148,6 @@ Route::prefix('admin')->group(function (){
 
     Route::post('/users/update/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@update',
         'as' => 'admin.users.update'
 
@@ -162,14 +156,12 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/users/delete/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@delete',
         'as' => 'admin.user.delete'
     ]);
 
     Route::get('/users/roles', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@roles',
         'as' => 'admin.users.roles'
 
@@ -178,7 +170,6 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/users/roles/create', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@rolesCreate',
         'as' => 'admin.users.role.create'
 
@@ -187,7 +178,6 @@ Route::prefix('admin')->group(function (){
 
     Route::post('/users/roles/store', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@roleStore',
         'as' => 'admin.users.role.store'
     ]);
@@ -195,21 +185,18 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/users/roles/delete/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminUsersController@roleDelete',
         'as' => 'admin.users.role.delete'
     ]);
 
     Route::get('/customers', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminCustomersController@index',
         'as' => 'admin.customers'
     ]);
 
     Route::get('/customer/edit/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminCustomersController@edit',
         'as' => 'admin.customers.edit'
 
@@ -217,14 +204,12 @@ Route::prefix('admin')->group(function (){
 
     Route::post('/customer/update/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminCustomersController@update',
         'as' => 'admin.customers.update'
     ]);
 
     Route::get('/customer/delete/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminCustomersController@delete',
         'as' => 'admin.customer.delete'
     ]);
@@ -232,7 +217,6 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/products', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminProductsController@index',
         'as' => 'admin.products'
     ]);
@@ -240,7 +224,6 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/products/create', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminProductsController@create',
         'as' => 'admin.product.create'
 
@@ -249,7 +232,6 @@ Route::prefix('admin')->group(function (){
 
     Route::post('/products/store', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminProductsController@store',
         'as' => 'admin.product.store'
 
@@ -258,46 +240,20 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/products/delete/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminProductsController@delete',
         'as' => 'admin.product.delete'
     ]);
 
     Route::get('/products/edit/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminProductsController@edit',
         'as' => 'admin.product.edit'
     ]);
 
     Route::post('/products/update/{id}', [
 
-        'middleware' => 'admin',
         'uses' => 'AdminProductsController@update',
         'as' => 'admin.product.update'
-    ]);
-
-
-    Route::get('/orders', [
-
-        'uses' => 'AdminOrdersController@index',
-        'as' => 'admin.order.index'
-    ]);
-
-
-    Route::get('/orders/edit/{id}', [
-
-
-        'uses' => 'AdminOrdersController@edit',
-        'as' => 'admin.order.edit'
-    ]);
-
-
-    Route::post('/orders/update/{id}', [
-
-
-        'uses' => 'AdminOrdersController@update',
-        'as' => 'admin.order.update'
     ]);
 
 
