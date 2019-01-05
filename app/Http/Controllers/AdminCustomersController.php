@@ -48,7 +48,7 @@ class AdminCustomersController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email',
-            'mobilephone' => 'required|digits:10',
+            'mobilephone' => 'required|digits:11',
             'streetname' => 'required',
             'housenumber' => 'required|integer',
             'city' => 'required',

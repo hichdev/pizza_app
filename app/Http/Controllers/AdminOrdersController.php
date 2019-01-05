@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\OrderDelivery;
 use App\Order;
 use App\Order_item;
 use App\Status;
@@ -58,10 +59,19 @@ class AdminOrdersController extends Controller
         $order= Order::find($id);
 
 
+
         $order->status_id = $request->status_id;
 
 
+        $status = $order->status->name;
+
         $order->save();
+        if ($status == 'onderweg'){
+
+            $order->user->notify(new OrderDelivery());
+
+        }
+
 
         Session::flash('success', 'Status van de bestelling werd gewijzigd');
 

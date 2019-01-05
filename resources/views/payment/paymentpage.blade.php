@@ -20,6 +20,9 @@
 
                     <h2>Betaal je bestelling met paypal</h2>
 
+
+                    
+
                     <div class="order-details">
 
 
@@ -54,7 +57,7 @@
 
                             <li><p class="strong">Totaal bestelling</p><p class="strong">€ {{ $payment_info['price'] }} </p></li>
 
-                            <li><a id="paypal-button"></a></li>
+                            <li><a href="" id="paypal-button"></a></li>
 
                         </ul>
 

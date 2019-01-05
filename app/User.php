@@ -10,6 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
+    public function routeNotificationForNexmo()
+    {
+        return $this->mobilephone;
+
+
+    }
+
     /**
      * The attributes that are mass assignable.
      *
