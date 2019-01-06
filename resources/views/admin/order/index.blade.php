@@ -57,7 +57,7 @@
                                                                 {{ $order->id }}
                                                             </td>
                                                             <td >
-                                                                {{ $order->date }}
+                                                                {{ \Carbon\Carbon::parse($order->date)->format('d-m-Y H:i:s')  }}
                                                             </td>
                                                             <td>
                                                                 {{ $order->user->firstname . ' '. $order->user->lastname }}

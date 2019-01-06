@@ -34,7 +34,7 @@
                                     @foreach($orders as $order)
 
                                         <tr class="danger">
-                                            <td>{{ \Carbon\Carbon::parse($order->date)->format('d-m-Y')  }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($order->date)->format('d-m-Y H:i:s')  }}</td>
                                             <td>{{ $order->delivery }}</td>
                                             <td>{{ $order->status->name }}</td>
                                             <td> <a href="{{ route('profile.orderDetails', ['id'=> $order->id]) }}" class="btn btn-info col-sm-7 waves-effect waves-light btn-block">Details</a></td>

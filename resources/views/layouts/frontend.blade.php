@@ -227,7 +227,7 @@
                 </div>
                 <div class="cartbox__total">
                     <ul>
-                        <li class="grandtotal">Totaal<span class="price">{{ $cartItems->totalPrice }}</span></li>
+                        <li class="grandtotal">Totaal<span class="price">€{{ $cartItems->totalPrice }}</span></li>
                     </ul>
                 </div>
                 <div class="cartbox__buttons">
