@@ -218,9 +218,7 @@
                             <p>Aantal <span>{{ $item['quantity'] }}</span></p>
                             <span class="price">€ {{ $item['data']['price'] }}</span>
                         </div>
-                        <button class="cartbox__item__remove">
-                            <i class="fa fa-trash"></i>
-                        </button>
+
                     </div><!-- //Cartbox Single Item -->
 
                     @endforeach
@@ -229,12 +227,12 @@
                 </div>
                 <div class="cartbox__total">
                     <ul>
-                        <li class="grandtotal">Total<span class="price">{{ $cartItems->totalPrice }}</span></li>
+                        <li class="grandtotal">Totaal<span class="price">{{ $cartItems->totalPrice }}</span></li>
                     </ul>
                 </div>
                 <div class="cartbox__buttons">
-                    <a class="food__btn" href="{{ route('cartproducts') }}"><span>View cart</span></a>
-                    <a class="food__btn" href="checkout.html"><span>Checkout</span></a>
+                    <a class="food__btn" href="{{ route('cartproducts') }}"><span>Ga naar winkelmandje</span></a>
+                    <a class="food__btn" href="{{ route('checkoutProducts') }}"><span>Afrekenen</span></a>
                 </div>
 
                 @else

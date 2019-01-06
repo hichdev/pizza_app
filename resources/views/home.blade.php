@@ -16,13 +16,8 @@
                             <div class="slider__content">
                                 <div class="slider__inner">
 
-                                    <div class="slider__input">
-                                        <input placeholder="Type Place, City.Division" type="text">
-                                        <input class="res__search" placeholder="Restaurant" type="text">
-                                        <div class="src__btn">
-                                            <a href="#">Search</a>
-                                        </div>
-                                    </div>
+                                    <h2 style="background-color: red; width: 600px; padding: 10px; margin: 0 auto;">Pizza Order System </h2>
+
                                 </div>
                             </div>
                         </div>

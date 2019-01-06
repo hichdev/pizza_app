@@ -109,7 +109,17 @@ class RegisterController extends Controller
     {
         $cart = Session::get('cart');
 
-        return view('auth.register')->with('cartItems', $cart);
+        if($cart){
+            $quantity = $cart->totalQuantity;
+
+
+            return view('auth.register')->with('cartItems', $cart)->with('quantity', $quantity);
+        }else{
+            return view('auth.register')->with('cartItems', $cart);
+        }
+
+
+
     }
 
     /**

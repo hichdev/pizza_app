@@ -723,13 +723,13 @@ a#scrollUp {
   background-position: center center; }
 
 .bg-image--18 {
-  background-image: url(images/bg/18.jpg);
+  background-image: url(/frontend/images/menu.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; }
 
 .bg-image--19 {
-  background-image: url(images/bg/19.jpg);
+  background-image: url(/frontend/images/winkelmand.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; }
@@ -5105,7 +5105,7 @@ div.slide__pizza img {
 .ht__bradcaump__wrap {
   height: 412px; }
   .ht__bradcaump__wrap .bradcaump__inner .bradcaump-title {
-    color: #444444;
+    color: white;
     font-family: "Open Sans", sans-serif;
     font-size: 36px;
     font-weight: 700;

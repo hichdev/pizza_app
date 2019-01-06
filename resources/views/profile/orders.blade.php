@@ -48,7 +48,7 @@
                                     @else
 
                                         <tr>
-                                            <td><h2>Nog geen bestellingen geplaatst.</h2></td>
+                                            <td class="text-center" colspan="4"><h2>Nog geen bestellingen geplaatst.</h2></td>
 
                                         </tr>
 

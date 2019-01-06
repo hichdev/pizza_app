@@ -45,6 +45,12 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
+
+                                                    @if(count($orders) != 0)
+
+
+
+
                                                     @foreach($orders as $order)
                                                         <tr>
                                                             <td >
@@ -73,7 +79,22 @@
                                                     @endforeach
 
 
+                                                    @else
 
+
+                                                        <tr>
+                                                            <td class="text-center" colspan="6"><h2>Nog geen bestellingen geplaatst.</h2></td>
+
+
+
+
+                                                        </tr>
+
+
+
+
+
+                                                    @endif
 
 
                                                     </tbody>

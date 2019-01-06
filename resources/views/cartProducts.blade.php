@@ -4,7 +4,7 @@
 @section('content')
 
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area bg-image--18">
+    <div class="ht__bradcaump__area bg-image--19">
         <div class="ht__bradcaump__wrap d-flex align-items-center">
             <div class="container">
                 <div class="row">

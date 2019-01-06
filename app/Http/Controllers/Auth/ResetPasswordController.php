@@ -45,8 +45,22 @@ class ResetPasswordController extends Controller
 
         $cart = Session::get('cart');
 
-        return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        )->with('cartItems', $cart);
+        if($cart){
+
+            $quantity = $cart->totalQuantity;
+
+
+            return view('auth.passwords.reset')->with(
+                ['token' => $token, 'email' => $request->email]
+            )->with('cartItems', $cart)->with('quantity', $quantity);
+
+        }else{
+            return view('auth.passwords.reset')->with(
+                ['token' => $token, 'email' => $request->email]
+            )->with('cartItems', $cart);
+        }
+
+
+
     }
 }

@@ -24,7 +24,18 @@ class FrontendProfileController extends Controller
 
         $cart = Session::get('cart');
 
-        return view('profile.orders', ['orders' => $orders])->with('cartItems', $cart);
+        if($cart){
+            $quantity = $cart->totalQuantity;
+
+            return view('profile.orders', ['orders' => $orders])->with('cartItems', $cart)->with('quantity', $quantity);
+
+
+        }else{
+            return view('profile.orders', ['orders' => $orders])->with('cartItems', $cart);
+
+        }
+
+
 
 
     }
@@ -39,7 +50,20 @@ class FrontendProfileController extends Controller
         $cart = Session::get('cart');
 
 
-        return view('profile.orderDetails')->with('order', $order)->with('order_items', $order_items)->with('cartItems', $cart);
+        if($cart){
+
+            $quantity = $cart->totalQuantity;
+
+
+            return view('profile.orderDetails')->with('order', $order)->with('order_items', $order_items)->with('cartItems', $cart)->with('quantity', $quantity);
+
+
+        }else{
+
+            return view('profile.orderDetails')->with('order', $order)->with('order_items', $order_items)->with('cartItems', $cart);
+
+        }
+
 
 
     }
@@ -49,7 +73,15 @@ class FrontendProfileController extends Controller
         $user = Auth::user();
         $cart = Session::get('cart');
 
-        return view('profile.edit')->with('user', $user )->with('cartItems', $cart);
+        if ($cart){
+            $quantity = $cart->totalQuantity;
+
+            return view('profile.edit')->with('user', $user )->with('cartItems', $cart)->with('quantity', $quantity);
+        }else{
+            return view('profile.edit')->with('user', $user )->with('cartItems', $cart);
+        }
+
+
 
 
 
@@ -92,6 +124,7 @@ class FrontendProfileController extends Controller
         $user->address->postcode = $request->postalcode;
         $user->address->stad = $request->city;
         $user->address->land = $request->country;
+        $user->password = bcrypt($request->password);
 
 
         $user->save();
