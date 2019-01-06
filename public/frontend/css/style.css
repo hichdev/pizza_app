@@ -5389,7 +5389,8 @@ div.slide__pizza img {
         color: #d50c0d;
         display: inline-block;
         font-family: "Alegreya", serif;
-        font-size: 50px;
+        font-size: 40px;
+        margin-right: 10px;
         font-weight: 700;
         line-height: 45px;
         margin-bottom: 26px; }

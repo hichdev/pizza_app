@@ -99,6 +99,7 @@
                                                             <tr>
                                                                 <th>ID</th>
                                                                 <th>Naam</th>
+                                                                <th>Aantal</th>
                                                                 <th>Prijs</th>
 
                                                             </tr>
@@ -116,6 +117,9 @@
                                                                     </td>
                                                                     <td >
                                                                         {{ $item->item_name }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $item->item_quantity }}
                                                                     </td>
                                                                     <td>
                                                                         {{ $item->item_price }}

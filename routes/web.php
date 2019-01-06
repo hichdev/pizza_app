@@ -98,6 +98,19 @@ Route::get('/profile/order/{id}', [
     'as' => 'profile.orderDetails'
 ]);
 
+Route::get('/profile', [
+
+    'uses'=> 'FrontendProfileController@profileEdit',
+    'as' => 'profile.edit'
+]);
+
+
+Route::post('/profile/update', [
+
+    'uses'=> 'FrontendProfileController@profileUpdate',
+    'as' => 'profile.update'
+]);
+
 
 
 

@@ -182,23 +182,31 @@ class FrontendCartController extends Controller
 
         $cart = Session::get('cart');
 
-        if ($cart != null){
+        if ($cart != null) {
 
             $date = date('Y-m-d H:i:s');
-            $newOrderArray = array('user_id' => Auth::User()->id, 'date' => $date , 'status_id' => $order_status, 'delivery' => $shipping_method, 'payment_methode'=> $payment_method, 'price' => $cart->totalPrice  );
+            $newOrderArray = array('user_id' => Auth::User()->id, 'date' => $date, 'status_id' => $order_status, 'delivery' => $shipping_method, 'payment_methode' => $payment_method, 'price' => $cart->totalPrice);
             $create_order = DB::table('orders')->insert($newOrderArray);
             $order_id = DB::getPdo()->lastInsertId();
 
 
-            foreach($cart->items as $cart_item){
+
+
+            foreach ($cart->items as $cart_item) {
 
                 $item_id = $cart_item['data']['id'];
                 $item_name = $cart_item['data']['name'];
                 $item_price = $cart_item['data']['price'];
-                $newItemsCurrentOrder = array('item_id' => $item_id, 'order_id' => $order_id, 'item_name' => $item_name, 'item_price' => $item_price);
+                $item_quantity = $cart_item['quantity'];
+                $newItemsCurrentOrder = array('item_id' => $item_id, 'order_id' => $order_id, 'item_name' => $item_name, 'item_quantity' => $item_quantity , 'item_price' => $item_price);
                 $created_order_items = DB::table('order_items')->insert($newItemsCurrentOrder);
 
+
+
+
             }
+
+
 
             Session::forget('cart');
 

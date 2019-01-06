@@ -17,6 +17,7 @@ class CreateOrderItemsTable extends Migration
             $table->increments('id');
             $table->integer('item_id');
             $table->integer('order_id');
+            $table->integer('item_quantity');
             $table->text('item_name');
             $table->decimal('item_price', 8,2);
 

@@ -46,7 +46,7 @@ class AdminProductsController extends Controller
         $this->validate($request, [
 
             'name' => 'required',
-            'price' => 'required|float',
+            'price' => 'required|numeric',
             'picture' => 'required|image',
 
         ]);
@@ -99,7 +99,7 @@ class AdminProductsController extends Controller
         $this->validate($request, [
 
             'name' => 'required',
-            'price' => 'required|integer',
+            'price' => 'required|numeric',
 
         ]);
 

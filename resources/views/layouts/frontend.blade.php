@@ -3,13 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Aahar || Food Delivery Html5 Template</title>
+    <title>Pizza order system | Eindwerk HBO5 Hicham Kadddouri</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico')}}">
-    <link rel="apple-touch-icon" href="{{ asset('frontend/images/icon.png')}}">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css')}}">
@@ -39,8 +36,8 @@
                 <div class="row">
                     <div class="col-lg-2 col-sm-4 col-md-6 order-1 order-lg-1">
                         <div class="logo">
-                            <a href="index.html">
-                                <img src="{{ asset('frontend/images/logo/foody.png')}}" alt="logo images">
+                            <a href="{{ route('home') }}">
+                                Pizza Frontend website
                             </a>
                         </div>
                     </div>
@@ -48,7 +45,7 @@
                         <div class="main__menu__wrap">
                             <nav class="main__menu__nav d-none d-lg-block">
                                 <ul class="mainmenu">
-                                    <li class="drop"><a href="index.html">Home</a></li>
+                                    <li class="drop"><a href="{{ route('home') }}">Home</a></li>
 
                                     <li class="drop"><a href="{{ route('menu') }}">Menu</a>
 
@@ -60,7 +57,7 @@
                                     <li class="drop"><a href="#">Mijn profiel</a>
                                         <ul class="dropdown__menu">
                                             <li><a href="{{ route('profile.orders') }}">Bekijk bestellingen</a></li>
-                                            <li><a href="checkout.html">Wijzig gegevens</a></li>
+                                            <li><a href="{{ route('profile.edit') }}">Wijzig gegevens</a></li>
                                             <li><a href="{{ route('user.logout') }}">Log uit</a></li>
                                         </ul>
                                     </li>
@@ -80,18 +77,7 @@
 
                     <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
                         <div class="header__right d-flex justify-content-end">
-                            @guest()
-                            <div class="log__in">
-                                <a class="accountbox-trigger" href="#"><i class="zmdi zmdi-account-o"></i></a>
-                            </div>
 
-                                @else
-
-                                <div class="log__in">
-                                    <a class="accountbox-trigger" href="#">Profiel</a>
-                                </div>
-
-                            @endguest
                             <div class="shopping__cart">
                                 <a class="minicart-trigger" href="#"><i class="zmdi zmdi-shopping-basket"></i></a>
                                 <div class="shop__qun">
@@ -127,19 +113,19 @@
             <div class="container">
                 <div class="row">
                     <!-- Start Single Footer -->
-                    <div class="col-md-6 col-lg-3 col-sm-12">
+                    <div class="col-md-6 ">
                         <div class="footer">
-                            <h2 class="ftr__title">About Aahar</h2>
+                            <h2 class="ftr__title">Bezoek onze winkel</h2>
                             <div class="footer__inner">
                                 <div class="ftr__details">
-                                    <p>Lorem ipsum dolor sit amconsectetur adipisicing elit,</p>
+                                    <p>Voor afhalingen kan u terecht op onderstaand adres</p>
                                     <div class="ftr__address__inner">
                                         <div class="ftr__address">
                                             <div class="ftr__address__icon">
                                                 <i class="zmdi zmdi-home"></i>
                                             </div>
                                             <div class="frt__address__details">
-                                                <p>Elizabeth Tower. 6th Floor Medtown, New York</p>
+                                                <p>Valentin Vaerwyckweg 1, 9000 Gent</p>
                                             </div>
                                         </div>
                                         <div class="ftr__address">
@@ -147,8 +133,7 @@
                                                 <i class="zmdi zmdi-phone"></i>
                                             </div>
                                             <div class="frt__address__details">
-                                                <p><a href="#">+088 01673-453290</a></p>
-                                                <p><a href="#">+088 01773-458290</a></p>
+                                                <p><a href="#">09 243 20 04</a></p>
                                             </div>
                                         </div>
                                         <div class="ftr__address">
@@ -156,7 +141,7 @@
                                                 <i class="zmdi zmdi-email"></i>
                                             </div>
                                             <div class="frt__address__details">
-                                                <p><a href="#">Aahardelivery@email.com</a></p>
+                                                <p><a href="#">info@hogent.be</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -170,86 +155,22 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End Single Footer -->
-                    <!-- Start Single Footer -->
-                    <div class="col-md-6 col-lg-3 col-sm-12 sm--mt--40">
-                        <div class="footer gallery">
-                            <h2 class="ftr__title">Our Gallery</h2>
-                            <div class="footer__inner">
-                                <ul class="sm__gallery__list">
-                                    <li><a href="#"><img src="images/gallery/sm-img/1.jpg" alt="gallery images"></a></li>
-                                    <li><a href="#"><img src="images/gallery/sm-img/2.jpg" alt="gallery images"></a></li>
-                                    <li><a href="#"><img src="images/gallery/sm-img/3.jpg" alt="gallery images"></a></li>
-                                    <li><a href="#"><img src="images/gallery/sm-img/4.jpg" alt="gallery images"></a></li>
-                                    <li><a href="#"><img src="images/gallery/sm-img/5.jpg" alt="gallery images"></a></li>
-                                    <li><a href="#"><img src="images/gallery/sm-img/6.jpg" alt="gallery images"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Footer -->
-                    <!-- Start Single Footer -->
-                    <div class="col-md-6 col-lg-3 col-sm-12 md--mt--40 sm--mt--40">
+                    <div class="col-md-6 ">
                         <div class="footer">
-                            <h2 class="ftr__title">Opening Time</h2>
+                            <h2 class="ftr__title">Openingsuren</h2>
                             <div class="footer__inner">
                                 <ul class="opening__time__list">
-                                    <li>Saturday<span>.......</span>9am to 11pm</li>
-                                    <li>Sunday<span>.......</span>9am to 11pm</li>
-                                    <li>Monday<span>.......</span>9am to 11pm</li>
-                                    <li>Tuesday<span>.......</span>9am to 11pm</li>
-                                    <li>Wednesday<span>.......</span>9am to 11pm</li>
-                                    <li>Thursday<span>.......</span>9am to 11pm</li>
-                                    <li>Friday<span>.......</span>9am to 11pm</li>
+                                    <li>Maandag<span>.......</span>12 tot 00:00</li>
+                                    <li>Dinsdag<span>.......</span>12 tot 00:00</li>
+                                    <li>Woensdag<span>.......</span>12 tot 00:00</li>
+                                    <li>Donderdag<span>.......</span>12 tot 00:00</li>
+                                    <li>Vrijdag<span>.......</span>12 tot 00:00</li>
+                                    <li>Zaterdag<span>.......</span>12 tot 00:00</li>
+                                    <li>Zondag<span>.......</span>12 tot 00:00</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <!-- End Single Footer -->
-                    <!-- Start Single Footer -->
-                    <div class="col-md-6 col-lg-3 col-sm-12 md--mt--40 sm--mt--40">
-                        <div class="footer">
-                            <h2 class="ftr__title">Latest Post</h2>
-                            <div class="footer__inner">
-                                <div class="lst__post__list">
-                                    <div class="single__sm__post">
-                                        <div class="sin__post__thumb">
-                                            <a href="blog-details,html">
-                                                <img src="images/blog/sm-img/1.jpg" alt="blog images">
-                                            </a>
-                                        </div>
-                                        <div class="sin__post__details">
-                                            <h6><a href="blog-details.html">Chicken Shawarma </a></h6>
-                                            <p>Lordo loram consecte turadip isicing</p>
-                                        </div>
-                                    </div>
-                                    <div class="single__sm__post">
-                                        <div class="sin__post__thumb">
-                                            <a href="blog-details,html">
-                                                <img src="images/blog/sm-img/2.jpg" alt="blog images">
-                                            </a>
-                                        </div>
-                                        <div class="sin__post__details">
-                                            <h6><a href="blog-details.html">Fruits Desert</a></h6>
-                                            <p>Lordo loramcon secte turadipi sicing</p>
-                                        </div>
-                                    </div>
-                                    <div class="single__sm__post">
-                                        <div class="sin__post__thumb">
-                                            <a href="blog-details,html">
-                                                <img src="images/blog/sm-img/3.jpg" alt="blog images">
-                                            </a>
-                                        </div>
-                                        <div class="sin__post__details">
-                                            <h6><a href="blog-details.html">Vanilla Pastry</a></h6>
-                                            <p>Lordo loramcon secte turadip isicing</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Footer -->
                 </div>
             </div>
         </div>
@@ -259,13 +180,9 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="copyright__inner">
                             <div class="cpy__right--left">
-                                <p>@All Right Reserved.<a href="https://freethemescloud.com/">Free themes Cloud</a></p>
+                                <p>@Alle rechten voorbehouden.<a href="#">Hicham Kaddouri</a></p>
                             </div>
-                            <div class="cpy__right--right">
-                                <a href="#">
-                                    <img src="images/icon/shape/2.png" alt="payment images">
-                                </a>
-                            </div>
+
                         </div>
                     </div>
                 </div>

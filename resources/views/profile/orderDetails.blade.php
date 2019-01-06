@@ -31,6 +31,7 @@
                         <thead>
                         <tr>
                             <th>Product naam</th>
+                            <th>Aantal</th>
                             <th>Prijs</th>
                         </tr>
                         </thead>
@@ -39,6 +40,7 @@
                         @foreach($order_items as $item)
                             <tr>
                                 <td>{{ $item->item_name }}</td>
+                                <td>{{ $item->item_quantity }}</td>
                                 <td>{{ $item->item_price }}</td>
                             </tr>
 

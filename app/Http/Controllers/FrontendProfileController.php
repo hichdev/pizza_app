@@ -42,6 +42,66 @@ class FrontendProfileController extends Controller
         return view('profile.orderDetails')->with('order', $order)->with('order_items', $order_items)->with('cartItems', $cart);
 
 
+    }
+
+    public function profileEdit(){
+
+        $user = Auth::user();
+        $cart = Session::get('cart');
+
+        return view('profile.edit')->with('user', $user )->with('cartItems', $cart);
+
+
+
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function profileUpdate(Request $request){
+
+        $this->validate($request, [
+
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'mobilephone' => 'required|digits:11',
+            'streetname' => 'required',
+            'housenumber' => 'required|integer',
+            'city' => 'required',
+            'postalcode' => 'required|digits:4',
+            'country' => 'required'
+
+        ]);
+
+        $user = Auth::user();
+
+
+
+
+
+
+
+        $user->lastname = $request->lastname;
+        $user->email = $request->email;
+        $user->firstname = $request->firstname;
+        $user->mobilephone = $request->mobilephone;
+        $user->address->straatNaam = $request->streetname;
+        $user->address->nummer = $request->housenumber;
+        $user->address->postcode = $request->postalcode;
+        $user->address->stad = $request->city;
+        $user->address->land = $request->country;
+
+
+        $user->save();
+        $user->address->save();
+
+        Session::flash('success', 'De aanpassingen werden opgeslaan');
+
+        return redirect()->back();
+
+
 
 
     }

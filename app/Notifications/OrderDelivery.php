@@ -51,7 +51,7 @@ class OrderDelivery extends Notification
     public function toNexmo($notifiable){
 
         return (new NexmoMessage())
-            ->content('Jouw bestelling is onderweg naar jou. Bedankt om bij ons te bestellen en wij zien je graag binnenkort terug. Smakelijk!');
+            ->content('De koerier is onderweg naar jou. Bedankt om bij ons te bestellen en wij zien je graag binnenkort terug. Smakelijk!');
 
     }
 
