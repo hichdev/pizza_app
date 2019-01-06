@@ -60,7 +60,7 @@
                                                                 <label >€ {{ $product->price }}</label>
                                                             </td>
                                                             <td class="action-icon">
-                                                                <a href="{{ route('admin.product.delete', ['id' => $product->id]) }}" class="btn btn-danger col-sm-7 waves-effect waves-light btn-block">Verwijder product</a>
+                                                                <a href="{{ route('admin.product.delete', ['id' => $product->id]) }}" class="btn btn-danger col-sm-8 waves-effect waves-light btn-block">Verwijder product</a>
                                                             </td>
                                                         </tr>
 

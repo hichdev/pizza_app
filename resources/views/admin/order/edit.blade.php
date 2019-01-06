@@ -122,7 +122,7 @@
                                                                         {{ $item->item_quantity }}
                                                                     </td>
                                                                     <td>
-                                                                        {{ $item->item_price }}
+                                                                        €{{ $item->item_price }}
                                                                     </td>
 
                                                                 </tr>

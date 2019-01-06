@@ -11,16 +11,7 @@
                         <div class="page-header-title">
                             <h4 class="m-b-10">Gebruikers Lijst</h4>
                         </div>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <i class="feather icon-home"></i>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#!">Dashboard</a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
             </div>
