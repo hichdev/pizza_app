@@ -63,7 +63,7 @@
                                                                 € {{ $order->price }}
                                                             </td>
                                                             <td class="action-icon">
-                                                                <a href="{{ route('admin.order.edit', ['id'=> $order->id]) }}" class="btn btn-info col-sm-6 waves-effect waves-light btn-block">Details</a>
+                                                                <a href="{{ route('admin.order.edit', ['id'=> $order->id]) }}" class="btn btn-info col-sm-7 waves-effect waves-light btn-block">Details</a>
                                                             </td>
                                                         </tr>
 

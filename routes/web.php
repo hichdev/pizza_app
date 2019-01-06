@@ -86,6 +86,20 @@ Route::get('/users/logout', [
     'as' => 'user.logout'
 ]);
 
+Route::get('/profile/orders', [
+
+    'uses'=> 'FrontendProfileController@orders',
+    'as' => 'profile.orders'
+]);
+
+Route::get('/profile/order/{id}', [
+
+    'uses'=> 'FrontendProfileController@details',
+    'as' => 'profile.orderDetails'
+]);
+
+
+
 
 
 

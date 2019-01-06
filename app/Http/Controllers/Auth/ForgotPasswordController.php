@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Support\Facades\Session;
 
 class ForgotPasswordController extends Controller
 {
@@ -29,4 +30,14 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function showLinkRequestForm()
+    {
+        $cart = Session::get('cart');
+
+
+        return view('auth.passwords.email')->with('cartItems', $cart);
+    }
+
+
 }

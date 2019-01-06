@@ -296,8 +296,8 @@
 
 
                                         <li><p class="strong">Levering/Afhalen</p><p>
-                                                <input type="radio" name="order_shipping" value="delivery" id="order_shipping"  checked /><label for="delivery">Levering</label><br />
-                                                <input type="radio"  name="order_shipping" value="pickup" id="order_shipping" /><label for="pickup">Afhalen</label>
+                                                <input type="radio" name="order_shipping" value="levering" id="order_shipping"  checked /><label for="levering">Levering</label><br />
+                                                <input type="radio"  name="order_shipping" value="afhalen" id="order_shipping" /><label for="afhalen">Afhalen</label>
                                             </p></li>
                                         <li><p class="strong">Totaal bestelling</p><p class="strong">€ {{ $cartItems->totalPrice }}</p></li>
                                         <li><button class="food__btn">Plaats bestelling</button></li>

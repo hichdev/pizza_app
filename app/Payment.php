@@ -8,6 +8,8 @@ class Payment extends Model
 {
     //
 
+    public $timestamps = false;
+
 
     public function order(){
 

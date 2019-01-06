@@ -49,29 +49,29 @@
                             <nav class="main__menu__nav d-none d-lg-block">
                                 <ul class="mainmenu">
                                     <li class="drop"><a href="index.html">Home</a></li>
-                                    <li><a href="about-us.html">About</a></li>
-                                    <li class="drop"><a href="menu-list.html">Menu</a>
+
+                                    <li class="drop"><a href="{{ route('menu') }}">Menu</a>
+
+                                    </li>
+
+
+                                    @if (Auth::check())
+
+                                    <li class="drop"><a href="#">Mijn profiel</a>
                                         <ul class="dropdown__menu">
-                                            <li><a href="menu-list.html">Menu List</a></li>
-                                            <li><a href="menu-details.html">Menu Details</a></li>
+                                            <li><a href="{{ route('profile.orders') }}">Bekijk bestellingen</a></li>
+                                            <li><a href="checkout.html">Wijzig gegevens</a></li>
+                                            <li><a href="{{ route('user.logout') }}">Log uit</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li class="drop"><a href="blog-mesonry.html">Blog</a>
-                                        <ul class="dropdown__menu">
-                                            <li><a href="blog-mesonry.html">Blog Mesonry</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop"><a href="#">Pages</a>
-                                        <ul class="dropdown__menu">
-                                            <li><a href="service.html">Service</a></li>
-                                            <li><a href="cart.html">Cart Page</a></li>
-                                            <li><a href="checkout.html">Checkout Page</a></li>
-                                            <li><a href="contact.html">Contact Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+
+                                    @else
+                                    <li><a href="{{ route('login') }}">Aanmelden</a></li>
+
+                                    @endif
+
+
+
                                 </ul>
                             </nav>
 
