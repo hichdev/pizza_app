@@ -2,10 +2,10 @@
 
 
 
-@section('')
+@section('content')
 
 
-    <h1>Bedankt voor jouw betaling. U wordt zodadelijk omgeleid naar het hoofdscherm.</h1>
+    <h3 class="text-center" style="margin-bottom: 80px;">Bedankt voor jouw betaling. U wordt zodadelijk omgeleid naar het hoofdscherm.</h3>
 
 
 

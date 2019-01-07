@@ -35,9 +35,12 @@ class PaymentsController extends Controller
 
     public function showPaymentreceived($paypalPaymentID, $paypalPayerID ){
 
+        $cart = Session::get('cart');
+
+
         if (!empty($paypalPaymentID) && !empty($paypalPayerID)){
 
-            $this->validate_payment($paypalPaymentID, $paypalPayerID);
+            //$this->validate_payment($paypalPaymentID, $paypalPayerID);
             $this->storePaymentInfo($paypalPaymentID, $paypalPayerID);
 
             $payment_received = Session::get('payment_info');
@@ -48,13 +51,13 @@ class PaymentsController extends Controller
 
             Session::forget('payment_info');
 
-            return View('payment.paymentreceived', ['payment_received'=> $payment_received]);
+            return View('payment.paymentreceived', ['payment_received'=> $payment_received])->with('cartItems', $cart);
 
 
 
         }else{
 
-            return redirect()->route('menu');
+            return redirect()->route('menu')->with('cartItems', $cart);
 
         }
 
@@ -115,7 +118,7 @@ class PaymentsController extends Controller
 
         $payment_info = Session::get('payment_info');
         $order_id = $payment_info['order_id'];
-        $status = $payment_info['status'];
+        $status = $payment_info['status_id'];
 
         if ($status == 1){
 
@@ -124,7 +127,7 @@ class PaymentsController extends Controller
                                     'paypal_payment_id' => $paypalPaymentID, 'paypal_payer_id'=> $paypalPayerID);
             $create_order = DB::table('payments')->insert($newPaymentArray);
 
-            DB::table('orders')->where('order_id', $order_id)->update('status_id',2);
+            DB::table('orders')->where('id', $order_id)->update(['status_id'=>2]);
 
 
 
